@@ -16,6 +16,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Checkbox } from "./ui/checkbox";
+import CustomFileInput from "./CustomFileInput";
 
 const formSchema = z.object({
   firstname: z.string().min(1, { message: "First name is required" }),
@@ -26,13 +27,16 @@ const formSchema = z.object({
     .email({ message: "Invalid email address" }),
   phone: z.string(),
   message: z.string().min(1, { message: "This field is required" }),
-//   consent: z.boolean().refine((val) => val === true, {
-//     message: "Please read and accept the terms and conditions",
-//   }),
-  signature: z.string().min(1, { message: "Your signature is required" }),
   consent: z.literal<boolean>(true, {
-    errorMap: () => ({ message: "Please read and accept the terms and conditions" }),
+    errorMap: () => ({
+      message: "Please read and accept the terms and conditions",
+    }),
   }),
+  signature: z.string().min(1, { message: "Your signature is required" }),
+  files: z.array(z.string()),
+  //   consent: z.boolean().refine((val) => val === true, {
+  //     message: "Please read and accept the terms and conditions",
+  //   }),
 });
 
 const FormComponent = () => {
@@ -46,11 +50,14 @@ const FormComponent = () => {
       message: "",
       consent: false,
       signature: "",
+      files: [],
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log({ ...values });
+
+    form.reset();
   }
 
   return (
@@ -67,7 +74,13 @@ const FormComponent = () => {
                   First name <span>*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="Jane" {...field} />
+                  <Input
+                    placeholder="Jane"
+                    {...field}
+                    className={
+                      form.formState.errors[field.name] ? "border-red-500" : ""
+                    }
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -84,7 +97,13 @@ const FormComponent = () => {
                   Surname <span>*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="Doe" {...field} />
+                  <Input
+                    placeholder="Doe"
+                    {...field}
+                    className={
+                      form.formState.errors[field.name] ? "border-red-500" : ""
+                    }
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -101,7 +120,13 @@ const FormComponent = () => {
                   Email address <span>*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="jane.doe@email.com" {...field} />
+                  <Input
+                    placeholder="jane.doe@email.com"
+                    {...field}
+                    className={
+                      form.formState.errors[field.name] ? "border-red-500" : ""
+                    }
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -116,7 +141,13 @@ const FormComponent = () => {
               <FormItem>
                 <FormLabel>Phone</FormLabel>
                 <FormControl>
-                  <Input placeholder="080123456789" {...field} />
+                  <Input
+                    placeholder=""
+                    {...field}
+                    className={
+                      form.formState.errors[field.name] ? "border-red-500" : ""
+                    }
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -133,7 +164,29 @@ const FormComponent = () => {
                   What would you like us to know? <span>*</span>
                 </FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Your message here..." {...field} />
+                  <Textarea
+                    placeholder="Your message here..."
+                    {...field}
+                    className={
+                      form.formState.errors[field.name] ? "border-red-500" : ""
+                    }
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* file */}
+          <FormField
+            control={form.control}
+            name="files"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <CustomFileInput
+                    onChange={(files) => field.onChange(files)}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -177,7 +230,12 @@ const FormComponent = () => {
                   Sign your name <span>*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input
+                    {...field}
+                    className={
+                      form.formState.errors[field.name] ? "border-red-500" : ""
+                    }
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
