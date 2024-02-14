@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 
 interface CustomFileInputProps {
-  onChange: (files: FileList) => void;
+  //   onChange: (files: FileList) => void;
+  onChange: (files: File[]) => void;
 }
 
 const CustomFileInput: React.FC<CustomFileInputProps> = ({ onChange }) => {
@@ -15,7 +16,7 @@ const CustomFileInput: React.FC<CustomFileInputProps> = ({ onChange }) => {
       const fileListArray = Array.from(files);
 
       setFileList((prevFiles) => [...prevFiles, ...fileListArray]);
-      onChange(files);
+      onChange(fileListArray);
 
       // Update upload progress
       //   const totalFiles = fileList.length + fileListArray.length; // Use fileList.length directly
@@ -24,18 +25,20 @@ const CustomFileInput: React.FC<CustomFileInputProps> = ({ onChange }) => {
     }
   };
 
+  //   console.log("fileList", fileList);
+
   const handleFileRemove = (index: number) => {
     const updatedFileList = [...fileList];
     updatedFileList.splice(index, 1);
     setFileList(updatedFileList);
 
-    const fileListObject = new DataTransfer();
-    updatedFileList.forEach((file) => {
-      fileListObject.items.add(file);
-    });
+    // const fileListObject = new DataTransfer();
+    // updatedFileList.forEach((file) => {
+    //   fileListObject.items.add(file);
+    // });
 
-    const newFileList = fileListObject.files;
-    onChange(newFileList);
+    // const newFileList = fileListObject.files;
+    onChange(updatedFileList);
 
     // Update upload progress
     // const totalFiles = updatedFileList.length;

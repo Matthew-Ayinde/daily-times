@@ -34,6 +34,7 @@ const formSchema = z.object({
   }),
   signature: z.string().min(1, { message: "Your signature is required" }),
   files: z.array(z.string()),
+  // files: z.array(z.string()),
   //   consent: z.boolean().refine((val) => val === true, {
   //     message: "Please read and accept the terms and conditions",
   //   }),
@@ -185,7 +186,11 @@ const FormComponent = () => {
               <FormItem>
                 <FormControl>
                   <CustomFileInput
-                    onChange={(files) => field.onChange(files)}
+                    onChange={(files) => {
+                      // console.log("files", files);
+                      field.onChange(files);
+                      // field.onChange(files.map((file) => file.name));
+                    }}
                   />
                 </FormControl>
                 <FormMessage />
