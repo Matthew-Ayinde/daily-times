@@ -1,14 +1,12 @@
 import React, { useRef, useState } from "react";
 
 interface CustomFileInputProps {
-  //   onChange: (files: FileList) => void;
   onChange: (files: File[]) => void;
 }
 
 const CustomFileInput: React.FC<CustomFileInputProps> = ({ onChange }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileList, setFileList] = useState<File[]>([]);
-  //   const [uploadProgress, setUploadProgress] = useState<number>(0);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -17,33 +15,16 @@ const CustomFileInput: React.FC<CustomFileInputProps> = ({ onChange }) => {
 
       setFileList((prevFiles) => [...prevFiles, ...fileListArray]);
       onChange(fileListArray);
-
-      // Update upload progress
-      //   const totalFiles = fileList.length + fileListArray.length; // Use fileList.length directly
-      //   const uploadedFiles = fileList.length;
-      //   setUploadProgress((uploadedFiles / totalFiles) * 100);
     }
   };
-
-  //   console.log("fileList", fileList);
 
   const handleFileRemove = (index: number) => {
     const updatedFileList = [...fileList];
     updatedFileList.splice(index, 1);
     setFileList(updatedFileList);
 
-    // const fileListObject = new DataTransfer();
-    // updatedFileList.forEach((file) => {
-    //   fileListObject.items.add(file);
-    // });
-
-    // const newFileList = fileListObject.files;
-    onChange(updatedFileList);
-
-    // Update upload progress
-    // const totalFiles = updatedFileList.length;
-    // const uploadedFiles = updatedFileList.length;
-    // setUploadProgress((uploadedFiles / totalFiles) * 100);
+    const fileListArray = Array.from(updatedFileList);
+    onChange(fileListArray);
   };
 
   const handleClick = () => {
@@ -76,32 +57,19 @@ const CustomFileInput: React.FC<CustomFileInputProps> = ({ onChange }) => {
             {fileList.map((file, index) => (
               <li key={index}>
                 {file.name}{" "}
-                {/* <button
+                <button
                   onClick={() => handleFileRemove(index)}
                   className="text-red-500 ml-2"
                 >
                   Remove
-                </button> */}
+                </button>
               </li>
             ))}
           </ul>
         </div>
       )}
 
-      {/* progress bar */}
       <div className="mt-4">
-        {/* <div className="h-3 relative bg-gray-200 rounded-md overflow-hidden">
-          <div
-            className="absolute top-0 left-0 h-full bg-yellow-400"
-            style={{ width: `${uploadProgress}%` }}
-          />
-          <div
-            className="absolute top-0 left-0 h-full bg-blue-400"
-            style={{ width: `${100 - uploadProgress}%` }}
-          />
-        </div> */}
-
-        {/* <p>{uploadProgress}%</p> */}
         <p className="mt-1 text-sm text-gray-600">
           ({fileList.length}/{fileList.length} files)
         </p>

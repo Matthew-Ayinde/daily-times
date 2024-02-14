@@ -187,9 +187,7 @@ const FormComponent = () => {
                 <FormControl>
                   <CustomFileInput
                     onChange={(files) => {
-                      // console.log("files", files);
-                      field.onChange(files);
-                      // field.onChange(files.map((file) => file.name));
+                      field.onChange(files.map((file) => file.name));
                     }}
                   />
                 </FormControl>
