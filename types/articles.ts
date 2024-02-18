@@ -1,6 +1,6 @@
 export interface IArticleRoot {
   data: IArticle[];
-  meta: Meta;
+  meta: IArticleMeta;
 }
 
 export interface IArticle {
@@ -15,20 +15,20 @@ export interface IAttributes {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  MediaFiles: MediaFiles;
-  content_creator: ContentCreator;
+  MediaFiles: IArticleMediaFiles;
+  content_creator: IArticleContentCreator;
 }
 
-export interface MediaFiles {
-  data: Daum2[];
+export interface IArticleMediaFiles {
+  data: IArticleMediaData[];
 }
 
-export interface Daum2 {
+export interface IArticleMediaData {
   id: number;
-  attributes: Attributes2;
+  attributes: IArticleMediaAttributes;
 }
 
-export interface Attributes2 {
+export interface IArticleMediaAttributes {
   name: string;
   alternativeText: any;
   caption: any;
@@ -47,16 +47,16 @@ export interface Attributes2 {
   updatedAt: string;
 }
 
-export interface ContentCreator {
-  data?: Data;
+export interface IArticleContentCreator {
+  data?: IArticleContentCreatorData;
 }
 
-export interface Data {
+export interface IArticleContentCreatorData {
   id: number;
-  attributes: Attributes3;
+  attributes: IArticleContentCreatorAttributes;
 }
 
-export interface Attributes3 {
+export interface IArticleContentCreatorAttributes {
   first_name: string;
   last_name: string;
   email: string;
@@ -67,11 +67,11 @@ export interface Attributes3 {
   publishedAt: string;
 }
 
-export interface Meta {
-  pagination: Pagination;
+export interface IArticleMeta {
+  pagination: IArticlePagination;
 }
 
-export interface Pagination {
+export interface IArticlePagination {
   page: number;
   pageSize: number;
   pageCount: number;
