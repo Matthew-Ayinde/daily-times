@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import CarouselBody from './CarouselWrapper'
+import CarouselWrapper from './CarouselWrapper'
 
 // import {
 //     Carousel,
@@ -14,10 +14,10 @@ import CarouselBody from './CarouselWrapper'
 
 const Carousel = () => {
   return (
-    <section className="bg-[url('/carousel/carousel.webp')] bg-no-repeat bg-center bg-cover bg-black w-full h-full px-12 py-20 text-white flex flex-col justify-center items-center">
-        <p className="text-5xl text-center font-bold mb-12">Categories</p>
+    <section className="bg-[url('/carousel/carousel.webp')] bg-no-repeat bg-center bg-cover bg-black w-full h-full px-6 lg:px-10 py-20 text-white flex flex-col justify-center items-center">
+        <p className="text-3xl lg:text-5xl text-center font-bold mb-6 lg:mb-12">Categories</p>
 
-        <CarouselBody />
+        <CarouselWrapper />
 
     </section>
   )
