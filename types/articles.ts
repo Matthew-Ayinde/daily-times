@@ -1,6 +1,10 @@
+import { IMeta } from ".";
+import { IContentCreatorData } from "./contentCreators";
+import { ITag } from "./tags";
+
 export interface IArticleRoot {
   data: IArticle[];
-  meta: IArticleMeta;
+  meta: IMeta;
 }
 
 export interface IArticle {
@@ -17,6 +21,7 @@ export interface IAttributes {
   publishedAt: string;
   MediaFiles: IArticleMediaFiles;
   content_creator: IArticleContentCreator;
+  tags: IArticle;
 }
 
 export interface IArticleMediaFiles {
@@ -34,7 +39,7 @@ export interface IArticleMediaAttributes {
   caption: any;
   width: any;
   height: any;
-  formats: any;
+  formats: IArticleMediaFormats;
   hash: string;
   ext: string;
   mime: string;
@@ -47,33 +52,39 @@ export interface IArticleMediaAttributes {
   updatedAt: string;
 }
 
+export interface IArticleMediaFormats {
+  small: IArticleFormatSmall;
+  thumbnail: IArticleFormatThumbnail;
+}
+
+export interface IArticleFormatSmall {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface IArticleFormatThumbnail {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
 export interface IArticleContentCreator {
-  data?: IArticleContentCreatorData;
+  data: IContentCreatorData;
 }
 
-export interface IArticleContentCreatorData {
-  id: number;
-  attributes: IArticleContentCreatorAttributes;
-}
-
-export interface IArticleContentCreatorAttributes {
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone_number: string;
-  extra_information: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
-
-export interface IArticleMeta {
-  pagination: IArticlePagination;
-}
-
-export interface IArticlePagination {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
+export interface IArticleTags {
+  data: ITag[];
 }

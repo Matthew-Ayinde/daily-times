@@ -1,6 +1,8 @@
+import { IMeta } from ".";
+
 export interface IContentCreatorRoot {
   data: IContentCreatorData[];
-  meta: IContentCreatorMeta;
+  meta: IMeta;
 }
 
 export interface IContentCreatorData {
@@ -17,15 +19,4 @@ export interface IContentCreatorAttributes {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-}
-
-export interface IContentCreatorMeta {
-  pagination: IContentCreatorPagination;
-}
-
-export interface IContentCreatorPagination {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
 }

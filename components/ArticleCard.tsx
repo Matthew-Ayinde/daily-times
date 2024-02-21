@@ -14,14 +14,16 @@ const ArticleCard = ({ article }: Props) => {
   const publishedAt = useRelativeTime(attributes.publishedAt);
 
   return (
-    <li className="w-80 border-2 border-blue-900 rounded-lg overflow-hidden">
-      <div className="h-32 border">
-        {/* <Image
-          src={`${BASE_URL}${attributes.MediaFiles.data[0].attributes.url}`}
+    <li className="w-80 border-2 border-blue-900 rounded-lg overflow-hidden shadow-lg shadow-gray-500/50 min-h-[396px]">
+      <div className="h-40 w-80 border relative">
+        <Image
+          src={`${attributes.MediaFiles.data[0].attributes.formats.small.url}`}
           alt={""}
-          height={128}
-          width={320}
-        /> */}
+          // height={128}
+          // width={320}
+          fill
+          className="object-cover absolute"
+        />
       </div>
       <div className="px-5 py-6">
         <div className="flex justify-start">
