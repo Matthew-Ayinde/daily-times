@@ -8,13 +8,15 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col p-24 gap-4">
       <AddArticle />
-      
+
       <ArticlesPage />
 
       <Carousel />
       {/* <FormComponent /> */}
 
       {/* <ButtonTemplate /> */}
+
+      {/* pull dev into this */}
     </main>
   );
 }
