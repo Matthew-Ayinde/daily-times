@@ -1,77 +1,68 @@
-import React from 'react'
-import CustomContentCard from './CustomContentCard'
+"use client";
+
+import React, { useEffect, useState } from "react";
+import CustomContentCard from "./CustomContentCard";
 
 const AdvertismentSection = () => {
-  //w-1/2 col-span-1 row-span-1 items-center space-y-6 
-  //w-1/2 col-span-1 row-span-2
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-20 gap-4">
-        
- 
-        <div className="flex flex-col space-y-4  items-center justify-center ">
-           <CustomContentCard 
-            imageSrc=""
-            imageAlt="Image Alt Text"
-            width={600}
-            height={400}
-            category="Category"
-            description="Long Heading is what you see here in this feature section and it may exceed one line"
-            readMoreLink="/story/123"
-           />
-         
-           <CustomContentCard 
-            imageSrc=""
-            imageAlt="Image Alt Text"
-            width={600}
-            height={400}
-            category="Category"
-            description="Long Heading is what you see here in this feature section and it may exceed one line"
-            readMoreLink="/story/123"
-           />
-        </div>
+  const [windowWidth, setWindowWidth] = useState<number | undefined>(undefined);
 
-        <div className="flex justify-center ">
-          <CustomContentCard 
-          imageSrc=""
-          imageAlt="Image Alt Text"
-          width={600}
-          height={940}
-          category="Category"
-          description="Long Heading is what you see here in this feature section and it may exceed one line"
-          readMoreLink="/story/123"
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const getHeight = () => {
+    if (windowWidth && windowWidth < 1024) {
+      // For mobile screens
+      return 400;
+    } else {
+      // For larger screens
+      return 940;
+    }
+  };
+
+  return (
+    <>
+      <div className="flex flex-col lg:flex-row gap-10 w-full items-center lg:items-start justify-between">
+        <div className="w-full lg:w-1/2 flex flex-col gap-3 lg:gap-10 justify-between items-center">
+          <CustomContentCard
+            imageSrc=""
+            imageAlt="Image Alt Text"
+            height={400}
+            category="Category"
+            description="Long Heading is what you see here in this feature section and it may exceed one line"
+            readMoreLink="/story/123"
+          />
+
+          <CustomContentCard
+            imageSrc=""
+            imageAlt="Image Alt Text"
+            height={400}
+            category="Category"
+            description="Long Heading is what you see here in this feature section and it may exceed one line"
+            readMoreLink="/story/123"
           />
         </div>
-    </div>
-    // <div className="grid-row-2 grid-cols-2 gap-4">
-    //     <CustomContentCard 
-    //       imageSrc=""
-    //       imageAlt="Image Alt Text"
-    //        width={300}
-    //       height={100}
-    //       category="Category"
-    //       description="Long Heading is what you see here in this feature section and it may exceed one line"
-    //       readMoreLink="/story/123"
-    //   />
-    //       <CustomContentCard 
-    //       imageSrc=""
-    //       imageAlt="Image Alt Text"
-    //       width={300}
-    //       height={100}
-    //       category="Category"
-    //       description="Long Heading is what you see here in this feature section and it may exceed one line"
-    //       readMoreLink="/story/123"
-    //   />
-    //       <CustomContentCard 
-    //       imageSrc=""
-    //       imageAlt="Image Alt Text"
-    //       width={300}
-    //       height={200}
-    //       category="Category"
-    //       description="Long Heading is what you see here in this feature section and it may exceed one line"
-    //       readMoreLink="/story/123"
-    //   />
-    // </div>
-  )
-}
 
-export default AdvertismentSection
+        <div className="w-full lg:w-1/2">
+          <CustomContentCard
+            imageSrc=""
+            imageAlt="Image Alt Text"
+            height={getHeight()}
+            category="Category"
+            description="Long Heading is what you see here in this feature section and it may exceed one line"
+            readMoreLink="/story/123"
+          />
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default AdvertismentSection;

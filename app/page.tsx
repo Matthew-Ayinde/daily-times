@@ -6,10 +6,9 @@ import ContentCard from "@/components/ContentCard";
 import CustomContentCard from "@/components/CustomContentCard";
 import AdvertismentSection from "@/components/AdvertismentSection";
 
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-24 gap-4">
+    <main className="flex min-h-screen flex-col p-10 gap-4">
       <AddArticle />
 
       {/* <ArticlesPage /> */}

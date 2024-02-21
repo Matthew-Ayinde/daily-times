@@ -1,20 +1,11 @@
-// components/Card.tsx
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link'
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 interface CustomCardProps {
   imageSrc: string;
   imageAlt: string;
-  width: number;
   height: number;
   category: string;
   description: string;
@@ -24,37 +15,34 @@ interface CustomCardProps {
 const CustomContentCard: React.FC<CustomCardProps> = ({
   imageSrc,
   imageAlt,
-  width,
-  height,
+  height = 400,
   category,
   description,
   readMoreLink,
 }) => {
   return (
-    <Card style={{width: width}} className="border-none shadow-none">
-        <CardHeader className="p-0">
-            <Image 
-            src={imageSrc} 
-            alt={imageAlt}  
-            width={width} 
-            height={height} 
-            className="object-cover bg-green-500 rounded-sm" />
+    <Card className="w-full border-none">
+      <CardHeader className="w-full relative" style={{ height: height }}>
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          className="object-cover absolute bg-gray-300 w-auto"
+        />
+      </CardHeader>
 
-            {/* <CardTitle>
-            <p className="text-[#7A0000] text-xs  mt-4 ">{category}</p>
-            </CardTitle> */}
-        </CardHeader>
-        <CardContent className="p-0 h-[110px] border-none shadow-none">
-           {/* <p className="text-red-500 text-xs font-bold">{category}</p> */}
-           <p className="text-custom-red text-xs  mt-4 font-normal">{category}</p>
-           <p className="text-custom-black leading-relaxed mt-4 font-bold max-w-[400px] flex-wrap">{description}</p>
-           <Link href={readMoreLink}>
-            <p className="text-custom-red hover:underline mt-1 block font-bold">Read More</p>
-          </Link>
-        </CardContent>
+      <CardContent className="min-h-[86px] mt-4 pr-5">
+        <p className="text-custom-red text-xs font-normal">{category}</p>
+        <p className="text-custom-black leading-relaxed my-2 font-bold flex-wrap">
+          {description}
+        </p>
+        <Link href={readMoreLink}>
+          <p className="text-custom-red underline-offset-4 hover:underline font-bold">
+            Read More
+          </p>
+        </Link>
+      </CardContent>
     </Card>
-
-
   );
 };
 
