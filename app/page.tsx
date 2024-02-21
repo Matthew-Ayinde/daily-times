@@ -14,6 +14,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col p-10 gap-4">
       <AddArticle />
 
+
       <FilteredArticle />
 
       <ArticlesPage />
@@ -35,6 +36,8 @@ export default function Home() {
       {/* <FormComponent /> */}
 
       {/* <ButtonTemplate /> */}
+
+      {/* pull dev into this */}
     </main>
   );
 }
