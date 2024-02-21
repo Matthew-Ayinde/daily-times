@@ -17,7 +17,7 @@ export default function Home() {
 
       {/* <ArticlesPage /> */}
 
-      {/* <AdvertismentSection /> */}
+      <AdvertismentSection />
 
       {/* <ContentCard 
       imageSrc=""
