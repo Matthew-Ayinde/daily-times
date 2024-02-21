@@ -52,32 +52,32 @@ const CarouselWrapper = () => {
         grabCursor={true}
         centeredSlides={true}
         loop={true}
-        slidesPerView={4}
+        slidesPerView={5}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}
         coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 50,
-          modifier: 2.5,
-          scale: 1,
+            rotate: 0,
+            stretch: -15,
+            depth: 100,
+            modifier: 1.5,
+            slideShadows: false,
         }}
         className=""
       >
         {slideData.map((data, index) => (
-          <SwiperSlide key={index}>
-            <div className="flex flex-col justify-center items-center">
-              <div className="relative w-[220px] h-[340px]">
-                <Image
-                  src={data.imgSrc}
-                  alt=""
-                  fill
-                  className="object-cover absolute"
-                />
-              </div>
+          <SwiperSlide key={index} className="swiper-slide">
+          <div className="w-full h-full">
+            <div className="w-[220px] h-[340px]">
+              <Image
+                src={data.imgSrc}
+                alt=""
+                fill
+                className="object-cover w-full h-full"
+              />
             </div>
-          </SwiperSlide>
+          </div>
+        </SwiperSlide>
         ))}
       </Swiper>
 
