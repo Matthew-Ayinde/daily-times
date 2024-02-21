@@ -4,6 +4,7 @@ import FormComponent from "@/components/FormComponent";
 import ButtonTemplate from "@/components/templates/ButtonTemplate";
 import ContentCard from "@/components/ContentCard";
 import CustomContentCard from "@/components/CustomContentCard";
+import AdvertismentSection from "@/components/AdvertismentSection";
 
 
 export default function Home() {
@@ -13,15 +14,7 @@ export default function Home() {
 
       {/* <ArticlesPage /> */}
 
-      <CustomContentCard 
-          imageSrc=""
-          imageAlt="Image Alt Text"
-          width={400}
-          height={200}
-          category="Category"
-          description="Long Heading is what you see here in this feature section and it may exceed one line"
-          readMoreLink="/story/123"
-      />
+      <AdvertismentSection />
 
       {/* <ContentCard 
       imageSrc=""

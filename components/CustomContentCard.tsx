@@ -31,7 +31,7 @@ const CustomContentCard: React.FC<CustomCardProps> = ({
   readMoreLink,
 }) => {
   return (
-    <Card  className="w-auto border-none shadow-none">
+    <Card style={{width: width}} className="border-none shadow-none">
         <CardHeader className="p-0">
             <Image 
             src={imageSrc} 

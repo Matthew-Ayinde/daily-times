@@ -22,7 +22,7 @@ interface CardProps {
 const ContentCard: React.FC<CardProps> = ({ imageSrc, altText, category, description, readMoreLink }) => {
   
 return (
-    <Card className="w-[381px] border-none shadow-none">
+    <Card className="w-[381px] border-none shadow-none ">
         <CardHeader className="p-0">
             <Image 
             src={imageSrc} 
