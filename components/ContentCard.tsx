@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card"
   
 
+
 interface CardProps {
   imageSrc: string;
   altText: string;
@@ -22,7 +23,7 @@ interface CardProps {
 const ContentCard: React.FC<CardProps> = ({ imageSrc, altText, category, description, readMoreLink }) => {
   
 return (
-    <Card className="w-[381px] border-none shadow-none ">
+    <Card className=" border-none shadow-none ">
         <CardHeader className="p-0">
             <Image 
             src={imageSrc} 
@@ -35,7 +36,7 @@ return (
             <p className="text-[#7A0000] text-xs  mt-4 ">{category}</p>
             </CardTitle> */}
         </CardHeader>
-        <CardContent className="p-0 h-[110px] border-none shadow-none">
+        <CardContent className="min-h-[86px] mt-4 pr-5 " >   
            {/* <p className="text-red-500 text-xs font-bold">{category}</p> */}
            <p className="text-custom-red text-xs  mt-4 font-normal">{category}</p>
            <p className="text-custom-black leading-relaxed mt-4 font-bold">{description}</p>
