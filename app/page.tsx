@@ -1,5 +1,6 @@
 import AddArticle from "@/components/AddArticle";
 import ArticlesPage from "@/components/ArticlesPage";
+import Carousel from "@/components/Carousel";
 import FormComponent from "@/components/FormComponent";
 import ButtonTemplate from "@/components/templates/ButtonTemplate";
 
@@ -9,6 +10,8 @@ export default function Home() {
       <AddArticle />
 
       <ArticlesPage />
+
+      <Carousel />
 
       {/* <FormComponent /> */}
 
