@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -39,15 +41,8 @@ const slideData = [
 ];
 
 const CarouselWrapper = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const swiperRef = useRef<any>(null);
-
-  const handleSlideChange = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      const swiperInstance = swiperRef.current.swiper;
-      setActiveIndex(swiperInstance.realIndex);
-    }
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<any>(null);
 
   return (
     <div className="relative w-full h-full">
@@ -68,7 +63,6 @@ const CarouselWrapper = () => {
           modifier: 2.5,
           scale: 1,
         }}
-        onSlideChange={handleSlideChange}
         className=""
       >
         {slideData.map((data, index) => (
@@ -82,21 +76,29 @@ const CarouselWrapper = () => {
                   className="object-cover absolute"
                 />
               </div>
-
-              {activeIndex === index && (
-                <div className="flex flex-col justify-center items-center mt-4">
-                  <p className="text-2xl font-bold">{data.title}</p>
-                  <p className="text-sm text-center">{data.content}</p>
-                </div>
-              )}
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {slideData.map((data, index) => (
+        <div key={index}>
+          {activeIndex === index && (
+            <div className="flex flex-col justify-center items-center mt-4">
+              <p className="text-2xl font-bold">{data.title}</p>
+              <p className="text-sm text-center">{data.content}</p>
+            </div>
+          )}
+        </div>
+      ))}
+
       <div className="flex gap-4 justify-center mt-4">
         <div className="">
           <button
-            onClick={() => swiperRef.current?.slidePrev()}
+            onClick={() => {
+              swiperRef.current?.slidePrev();
+              setActiveIndex(swiperRef.current.realIndex);
+            }}
             className="border-none outline-none"
           >
             <Image
@@ -109,7 +111,10 @@ const CarouselWrapper = () => {
         </div>
         <div className="">
           <button
-            onClick={() => swiperRef.current?.slideNext()}
+            onClick={() => {
+              swiperRef.current?.slideNext();
+              setActiveIndex(swiperRef.current.realIndex);
+            }}
             className="border-none outline-none"
           >
             <Image
