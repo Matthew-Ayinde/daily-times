@@ -57,6 +57,15 @@ const ArticlesPage = () => {
     <div>
       <h1>Articles</h1>
 
+      {/* <div>
+        {filteredData.map((item) => (
+          <div key={item.id}>
+            <h2>{item.attributes.Title}</h2>
+            <p>{item.attributes.Details}</p>
+          </div>
+        ))}
+      </div> */}
+
       <ul className="flex flex-wrap gap-5 items-center justify-center">
         {articlesData?.data.map((article) => (
           <ArticleCard key={article.id} article={article} />

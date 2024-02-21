@@ -7,15 +7,18 @@ import ContentCard from "@/components/ContentCard";
 import CustomContentCard from "@/components/CustomContentCard";
 import AdvertismentSection from "@/components/AdvertismentSection";
 import TrendingSection from "@/components/TrendingSection";
+import FilteredArticle from "@/components/FilteredArticle";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col p-10 gap-4">
       <AddArticle />
 
-      <TrendingSection />
+      <FilteredArticle />
 
-      {/* <ArticlesPage /> */}
+      <ArticlesPage />
+
+      <TrendingSection />
 
       <AdvertismentSection />
 
