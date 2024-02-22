@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
  
-@layer base {
+/* @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -33,7 +33,7 @@
     --ring: 222.2 84% 4.9%;
  
     --radius: 0.5rem;
-  }
+  } 
  
   .dark {
     --background: 222.2 84% 4.9%;
@@ -74,3 +74,4 @@
     @apply bg-background text-foreground;
   }
 }
+*/

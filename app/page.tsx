@@ -1,18 +1,16 @@
-import AddArticle from "@/components/AddArticle";
-import ArticlesPage from "@/components/ArticlesPage";
-import FormComponent from "@/components/FormComponent";
-import ButtonTemplate from "@/components/templates/ButtonTemplate";
+import Carousel from "@/components/Carousel";
+import HomePage from "@/components/HomePage";
+import Story from "@/components/Story";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-24 gap-4">
-      <AddArticle />
+    <div className="">
+      <HomePage />
 
-      <ArticlesPage />
+      <Carousel />
 
-      {/* <FormComponent /> */}
+      <Story />
 
-      {/* <ButtonTemplate /> */}
-    </main>
+    </div>
   );
 }
