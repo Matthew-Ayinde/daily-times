@@ -28,14 +28,17 @@ const ContentCard = ({ article }: CardProps) => {
         />
       </CardHeader>
 
-      <CardContent className="min-h-[86px] mt-4 pr-5">
-        <p className="text-custom-red text-xs font-normal">
+      <CardContent className="min-h-100px mt-4 pr-5">
+        <Link
+          href={`${attributes.category}`}
+          className="text-custom-red text-xs font-normal"
+        >
           {attributes.category}
+        </Link>
+        <p className="text-custom-black leading-relaxed my-2 font-bold h-14 overflow-hidden line-clamp-2">
+          {attributes.Title}
         </p>
-        <p className="text-custom-black leading-relaxed my-2 font-bold">
-          {attributes.Details}
-        </p>
-        <Link href={`${attributes.category}/${titleSlug}`}>
+        <Link href={`${attributes.category}/${id}`}>
           <p className="text-custom-red hover:underline mt-1 block font-bold">
             Read More
           </p>

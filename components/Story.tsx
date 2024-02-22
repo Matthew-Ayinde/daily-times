@@ -22,16 +22,6 @@ const Story = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="relative w-full h-full">
-            <div className="absolute inset-0 bg-black-800 opacity-75 backdrop-filter backdrop-blur-lg"></div>
-            <div className="absolute inset-0 flex justify-center items-center">
-                <div className="text-white text-center">
-                <h1 className="text-4xl font-bold">Blurred Text</h1>
-                <p className="text-lg mt-4">This text is written on a blurry background.</p>
-                </div>
-            </div>
-            </div> */}
     </section>
   );
 };
