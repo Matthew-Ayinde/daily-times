@@ -33,7 +33,9 @@ const ContentCard = ({ article }: CardProps) => {
           {attributes.category}
         </p>
         <p className="text-custom-black leading-relaxed my-2 font-bold">
-          {attributes.Details}
+          {attributes.Details?.length > 60
+            ? `${attributes.Details?.slice(0, 70)}...`
+            : attributes.Details}
         </p>
         <Link href={`${attributes.category}/${titleSlug}`}>
           <p className="text-custom-red hover:underline mt-1 block font-bold">
