@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useSelectedLayoutSegment } from "next/navigation";
+import CloseIcon from "./CloseIcon";
+import OpenIcon from "./OpenIcon";
+import { Button } from "./ui/button";
 
 export interface IAffiliatedLinks {
   link: string;
@@ -18,15 +21,13 @@ const Navbar = () => {
     setOpen(!open);
   };
 
-  const navbarHeight = 75;
+  const navbarHeight = 96;
   const fullScreenHeight = `calc(100vh - ${navbarHeight}px)`;
 
   return (
-    <div className="bg-white shadow-md w-full transition-all duration-300 ease-in-out">
-      <div
-        className={`lg:flex items-center justify-between py-4 lg:px-20 px-6 bg-yellow-400`}
-      >
-        <div className="bg-red-500">
+    <div className="max-w-screen-xxl lg:px-[90px] px-6 py-5 w-full mx-auto border-b">
+      <div className="flex items-center justify-between w-full">
+        <div className="w-fit">
           <Link href={"/"}>
             <Image
               alt="alt Image"
@@ -35,46 +36,53 @@ const Navbar = () => {
               src={"/logo.svg"}
               className=""
             />
+
+            <p className="text-sm font-semibold mt-0 text-custom-black">
+              Since 1926
+            </p>
           </Link>
-          <p className="font-semibold text-sm mt-0">Since 1926</p>
         </div>
 
-        <div
-          onClick={toggleMobileMenu}
-          className="absolute right-6 top-1/2 -translate-y-1/2 cursor-pointer lg:hidden"
-        >
-          {open ? <p>close</p> : <p>open</p>}
+        <div onClick={toggleMobileMenu} className="lg:hidden cursor-pointer">
+          {open ? <CloseIcon /> : <OpenIcon />}
         </div>
 
         <ul
-          className={`lg:flex lg:items-center lg:pb-0 pb-12 absolute lg:static bg-white lg:bg-inherit lg:z-auto left-0 w-full lg:w-auto lg:pl-0 pl-9 transition-all duration-500 ease-in-out ${
+          className={`lg:flex lg:items-center lg:justify-between absolute lg:static bg-white lg:z-auto left-0 w-full lg:w-auto transition-all duration-500 ease-in-out lg:pl-0 pl-9 lg:pt-0 pt-12 lg:gap-[66px] border-t lg:border-t-0 ${
             open
-              ? "top-[75px] opacity-100 z-50 lg:z-auto"
+              ? "top-[96px] opacity-100 z-50 lg:z-auto"
               : "top-[-490px] lg:opacity-100 opacity-0 z-[-1] lg:z-auto"
           }`}
           style={{ height: open ? fullScreenHeight : "" }}
         >
           {navLinks.map((nav, index) => {
             const isActive = segment === nav.url;
-            const isHome = nav.url === "#";
 
             return (
-              <li key={index} className="lg:ml-8 lg:my-0 my-7">
+              <li key={index} className="lg:mb-0 mb-7">
                 <Link
                   href={`/${nav.url}`}
-                  className={`text-sm hover:text-custom-green transition-all ease-in-out duration-300 cursor-pointer font-light ${
-                    isActive || (isHome && segment === null)
-                      ? "text-custom-green font-medium"
-                      : "text-custom-darkgray lg:text-white"
-                  }`}
                   onClick={() => setOpen(false)}
+                  className={`uppercase text-lg text-custom-black font-semibold cursor-pointer ${
+                    isActive
+                      ? "text-custom-green font-medium"
+                      : "text-custom-darkgray"
+                  }`}
                 >
                   {nav.link}
                 </Link>
               </li>
             );
           })}
+
+          <Button className="bg-custom-black px-12 py-[14px] rounded text-white lg:hidden flex items-center justify-cente">
+            Submit a story
+          </Button>
         </ul>
+
+        <Button className="bg-custom-black px-12 py-[14px] rounded text-white hidden lg:flex lg:items-center lg:justify-center">
+          Submit a story
+        </Button>
       </div>
     </div>
   );
@@ -84,35 +92,19 @@ export default Navbar;
 
 export const navLinks: IAffiliatedLinks[] = [
   {
-    link: "Home",
-    url: "#",
-  },
-  {
-    link: "About Us",
-    url: "about-us",
-  },
-  {
-    link: "Our Brands",
-    url: "our-brands",
-  },
-  {
-    link: "Sustainability",
-    url: "sustainability",
-  },
-  {
-    link: "News/Media",
+    link: "news",
     url: "news",
   },
   {
-    link: "Career",
-    url: "career",
+    link: "videos",
+    url: "videos",
   },
   {
-    link: "Contact",
-    url: "contact",
+    link: "entertainment",
+    url: "entertainment",
   },
   {
-    link: "Buy Now",
-    url: "buy-now",
+    link: "categories",
+    url: "categories",
   },
 ];

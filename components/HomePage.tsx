@@ -34,7 +34,7 @@ const HomePage = () => {
   } = useQuery<IArticle[], Error>({
     queryKey: ["articles"],
     queryFn: fetchArticles,
-    // staleTime: 3600000,
+    staleTime: 3600000,
   });
 
   if (isFetching) return <div>Fetching...</div>;
