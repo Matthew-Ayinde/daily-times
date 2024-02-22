@@ -3,7 +3,7 @@
 import { useIsFetching, useQuery } from "@tanstack/react-query";
 import React from "react";
 import AdvertismentSection from "./AdvertismentSection";
-import { IArticleRoot } from "@/types/articles";
+import { IArticle, IArticleRoot } from "@/types/articles";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
 import ContentCard from "./ContentCard";
@@ -11,11 +11,15 @@ import ContentCard from "./ContentCard";
 const HomePage = () => {
   const isFetching = useIsFetching();
 
-  const fetchArticles = async (): Promise<IArticleRoot> => {
+  const fetchArticles = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/articles?populate=*`);
+      const response = await axios.get<IArticleRoot>(
+        `${BASE_URL}/api/articles?populate=*`
+      );
+
+      const articles: IArticle[] = response.data.data;
       // console.log(response.data);
-      return response.data;
+      return articles;
     } catch (error) {
       throw error;
     }
@@ -27,7 +31,7 @@ const HomePage = () => {
     isError,
     isSuccess,
     error,
-  } = useQuery<IArticleRoot>({
+  } = useQuery<IArticle[], Error>({
     queryKey: ["articles"],
     queryFn: fetchArticles,
     // staleTime: 5000,
@@ -51,13 +55,13 @@ const HomePage = () => {
         <div className="mt-52">
           <p className="font-bold text-center text-5xl mb-20">Trending</p>
 
-          {/* <TrendingSection /> */}
-
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {articlesData?.data.map((article) => (
-              <ContentCard article={article} key={article.id} />
-            ))}
-          </ul>
+          {isSuccess && articlesData && (
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {articlesData.map((article) => (
+                <ContentCard article={article} key={article.id} />
+              ))}
+            </ul>
+          )}
         </div>
       </>
     </div>
