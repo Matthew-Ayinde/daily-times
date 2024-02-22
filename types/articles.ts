@@ -12,6 +12,22 @@ export interface IArticle {
   attributes: IAttributes;
 }
 
+export interface TagAtrrib {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+export interface Tags {
+  id: number;
+  attributes: TagAtrrib;
+}
+
+export interface TagsData {
+  data: Tags[];
+}
+
 export interface IAttributes {
   Title: string;
   Details: string;
@@ -21,7 +37,7 @@ export interface IAttributes {
   publishedAt: string;
   MediaFiles: IArticleMediaFiles;
   content_creator: IArticleContentCreator;
-  tags: IArticle;
+  tags: TagsData;
 }
 
 export interface IArticleMediaFiles {

@@ -70,9 +70,7 @@ const HomeCarousel = () => {
               <div
                 key={index}
                 className={`bg-gray-300  relative ${
-                  currentSlide
-                    ? "w-[320px] h-[400px]"
-                    : "w-[220px] h-[340px]"
+                  currentSlide ? "w-[320px] h-[400px]" : "w-[220px] h-[340px]"
                 }`}
               >
                 <Image

@@ -3,7 +3,7 @@
 import { useIsFetching, useQuery } from "@tanstack/react-query";
 import React from "react";
 import AdvertismentSection from "./AdvertismentSection";
-import { IArticle, IArticleRoot } from "@/types/articles";
+import { IArticle } from "@/types/articles";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
 import ContentCard from "./ContentCard";
@@ -13,17 +13,23 @@ const HomePage = () => {
 
   const fetchArticles = async () => {
     try {
-      const response = await axios.get<IArticleRoot>(
-        `${BASE_URL}/api/articles?populate=*`
-      );
-
+      const response = await axios.get(`${BASE_URL}/api/articles?populate=*`);
       const articles: IArticle[] = response.data.data;
-      // console.log(response.data);
-      return articles;
+      const filteredTrendingItems = filterByTag(articles, "Trending");
+
+      return filteredTrendingItems;
     } catch (error) {
       throw error;
     }
   };
+
+  function filterByTag(array: IArticle[], tagName: string) {
+    return array.filter((item) => {
+      return item.attributes.tags.data.some(
+        (tag) => tag.attributes.name === tagName
+      );
+    });
+  }
 
   const {
     data: articlesData,
