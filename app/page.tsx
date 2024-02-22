@@ -6,13 +6,12 @@ import Story from "@/components/Story";
 export default function Home() {
   return (
     <div className="">
-      {/* <HomePage /> */}
+      <HomePage />
 
       <HomeCarousel />
 
       {/* <Carousel /> */}
       <Story />
-
     </div>
   );
 }
