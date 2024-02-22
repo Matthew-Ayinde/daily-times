@@ -15,6 +15,8 @@ const HomeCarousel = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    // nextArrow: <ButtonNext />,
+    // prevArrow: <ButtonPrevious />,
 
     centerMode: true,
     autoplay: true,
@@ -98,6 +100,10 @@ const HomeCarousel = () => {
             </div>
           ))}
         </div>
+        <div className="flex gap-4 mt-4 items-center justify-center">
+          <ButtonNext />
+          <ButtonPrevious />
+        </div>
       </div>
     </div>
   );
@@ -133,3 +139,19 @@ const slideData = [
     imgSrc: "/carousel/carouselImg5.webp",
   },
 ];
+
+const ButtonNext =() =>{
+  return (
+      <button className="bg-white text-black font-bold py-2 px-4 rounded-full">
+        Next
+      </button>
+  )
+}
+
+const ButtonPrevious =() =>{
+  return (
+      <button className="bg-white text-black font-bold py-2 px-4 rounded-full">
+        Previous
+      </button>
+  )
+}
