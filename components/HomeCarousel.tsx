@@ -31,13 +31,13 @@ const HomeCarousel = () => {
           slidesToScroll: 1,
         },
       },
-      //   {
-      //     breakpoint: 768,
-      //     settings: {
-      //       slidesToShow: 3,
-      //       slidesToScroll: 11,
-      //     },
-      //   },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
       {
         breakpoint: 640,
         settings: {
@@ -51,7 +51,7 @@ const HomeCarousel = () => {
   return (
     <div
       className="bg-[url('/carousel/carousel.webp')] bg-no-repeat bg-center bg-cover bg-black w-full flex-center"
-    //   style={{ height: 800 }}
+      //   style={{ height: 800 }}
     >
       <div className="max-w-screen-xxl px-90px pt-28 pb-100px w-full mx-auto text-white">
         <p className="text-3xl lg:text-5xl text-center font-bold mb-6 lg:mb-12">
@@ -73,8 +73,8 @@ const HomeCarousel = () => {
                 key={index}
                 className={`bg-gray-300  relative ${
                   currentSlide
-                    ? "min-w-[320px] min-h-[400px]"
-                    : "min-w-[220px] min-h-[340px]"
+                    ? "w-[320px] h-[400px]"
+                    : "w-[220px] h-[340px]"
                 }`}
               >
                 <Image
