@@ -1,6 +1,6 @@
 import Carousel from "@/components/Carousel";
+import HomeCarousel from "@/components/HomeCarousel";
 import HomePage from "@/components/HomePage";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
       {/* <Navbar /> */}
       <HomePage />
 
-      <Carousel />
+      <HomeCarousel />
 
       <Footer />
 

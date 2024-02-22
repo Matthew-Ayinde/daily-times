@@ -47,6 +47,7 @@ const config = {
       },
       spacing: {
         "100px": "100px",
+        "90px": "90px",
       },
     },
   },
