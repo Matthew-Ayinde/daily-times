@@ -60,8 +60,9 @@ const AdvertismentSection = () => {
     <>
       <div className="flex flex-col lg:flex-row gap-10 w-full items-center lg:items-start justify-between">
         <div className="w-full lg:w-1/2 flex flex-col gap-3 lg:gap-10 justify-between items-center">
-          {fetchedArticles?.slice(0, 2)?.map((article: any) => (
+          {fetchedArticles?.slice(0, 2)?.map((article: any, index) => (
             <CustomContentCard
+              key={index}
               imageSrc={
                 article?.attributes.MediaFiles.data[0].attributes.formats.small
                   .url
