@@ -1,74 +1,48 @@
-import React from 'react'
-import Link from 'next/link';
-import Image from 'next/image';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-  
-
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { IArticle } from "@/types/articles";
+import { slugify } from "@/lib/helpers";
 
 interface CardProps {
-  imageSrc: string;
-  altText: string;
-  category: string;
-  description: string;
-  readMoreLink: string;
+  article: IArticle;
 }
 
-const ContentCard: React.FC<CardProps> = ({ imageSrc, altText, category, description, readMoreLink }) => {
-  
-return (
-    <Card className=" border-none shadow-none ">
-        <CardHeader className="p-0">
-            <Image 
-            src={imageSrc} 
-            alt={altText} 
-            width={381} 
-            height={240} 
-            className="object-cover bg-green-500 rounded-sm" />
+const ContentCard = ({ article }: CardProps) => {
+  const { attributes, id } = article;
 
-            {/* <CardTitle>
-            <p className="text-[#7A0000] text-xs  mt-4 ">{category}</p>
-            </CardTitle> */}
-        </CardHeader>
-        <CardContent className="min-h-[86px] mt-4 pr-5 " >   
-           {/* <p className="text-red-500 text-xs font-bold">{category}</p> */}
-           <p className="text-custom-red text-xs  mt-4 font-normal">{category}</p>
-           <p className="text-custom-black leading-relaxed mt-4 font-bold">{description}</p>
-           <Link href={readMoreLink}>
-            <p className="text-custom-red hover:underline mt-1 block font-bold">Read More</p>
-          </Link>
-        </CardContent>
-        {/* <CardFooter className="p-0">
-          <Link href={readMoreLink}>
-            <p className="text-[#7A0000] hover:underline mt-1 block font-bold">Read More</p>
-          </Link>
-        </CardFooter> */}
+  const titleSlug = slugify(attributes.Title);
+  // console.log(titleSlug);
+
+  return (
+    <Card className="w-min border-none">
+      <CardHeader className="h-60 w-[350px] border relative">
+        <Image
+          src={`${attributes.MediaFiles.data[0].attributes.formats.small.url}`}
+          alt={""}
+          // width={350}
+          // height={240}
+          fill
+          className="object-cover absolute"
+        />
+      </CardHeader>
+
+      <CardContent className="min-h-[86px] mt-4 pr-5">
+        <p className="text-custom-red text-xs font-normal">
+          {attributes.category}
+        </p>
+        <p className="text-custom-black leading-relaxed my-2 font-bold">
+          {attributes.Details}
+        </p>
+        <Link href={`${attributes.category}/${titleSlug}`}>
+          <p className="text-custom-red hover:underline mt-1 block font-bold">
+            Read More
+          </p>
+        </Link>
+      </CardContent>
     </Card>
-    // <div className="w-[381px] mx-auto rounded-md overflow-hidden">
-    // <Image 
-    //   src={imageSrc} 
-    //   alt={altText} 
-    //   width={imageWidth} 
-    //   height={imageHeight} 
-    //   className="object-cover bg-green-500 rounded-sm" />
-    //   <div className="p-4">
-    //     <p className="text-red-500 text-xs font-bold">{category}</p>
-    //     <p className="text-black leading-relaxed mt-2">{description}</p>
-    //     <Link href={readMoreLink}>
-    //       <p className="text-red-500 hover:underline mt-1 block">Read More</p>
-    //     </Link>
-    //   </div>
-    // </div>
   );
 };
 
 export default ContentCard;
-
-
-
