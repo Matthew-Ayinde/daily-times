@@ -1,4 +1,4 @@
-import useRelativeTime from "@/helpers/useRelativeTime";
+import useRelativeTime from "@/hooks/useRelativeTime";
 import { BASE_URL } from "@/lib/constants";
 import { IArticle } from "@/types/articles";
 import Image from "next/image";
