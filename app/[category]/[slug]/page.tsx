@@ -1,9 +1,11 @@
 "use client";
 
-import { BASE_URL } from "@/lib/constants";
+import { BASE_URL, markdownData } from "@/lib/constants";
 import { IArticle, IArticleRoot } from "@/types/articles";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+
+import parse from "html-react-parser";
 
 const Page = ({ params }: { params: { slug: string } }) => {
   const originalTitle = params.slug;
@@ -41,7 +43,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
     <div>
       <h1>Slug: {params.slug}</h1>
 
-      
+      <div className="">{parse(markdownData, { trim: true })}</div>
 
       {/* <div className="">
         <h3>{filteredArticle?.attributes.Title ?? "Title"}</h3>
