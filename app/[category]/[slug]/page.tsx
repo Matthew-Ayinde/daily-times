@@ -41,10 +41,12 @@ const Page = ({ params }: { params: { slug: string } }) => {
     <div>
       <h1>Slug: {params.slug}</h1>
 
-      <div className="">
+      
+
+      {/* <div className="">
         <h3>{filteredArticle?.attributes.Title ?? "Title"}</h3>
         <h3>{filteredArticle?.attributes.Details ?? "Details"}</h3>
-      </div>
+      </div> */}
     </div>
   );
 };
