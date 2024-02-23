@@ -48,14 +48,7 @@ const CategoryRoute = ({ params }: { params: { category: string } }) => {
   return (
     <div>
       <h1>categoryName: {params.category}</h1>
-
-      {articlesData && Array.isArray(articlesData) && (
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {articlesData.map((article) => (
-            <ContentCard article={article} key={article.id} />
-          ))}
-        </ul>
-      )}
+      CategoryRoute
     </div>
   );
 };
