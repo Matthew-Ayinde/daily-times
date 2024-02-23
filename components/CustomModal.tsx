@@ -4,8 +4,8 @@ import { Button } from "./ui/button";
 
 const CustomModal = () => {
   return (
-    <div className="h-screen w-screen bg-custom-black/50 absolute top-0 left-0 right-0">
-      <div className="w-full h-full flex-center px-5 lg:px-0">
+    <div className="h-full w-screen bg-custom-black/50">
+      <div className="w-full h-full flex-center lg:px-[150px] px-10 lg:py-100px py-6">
         <div className="max-w-screen-xxl w-full mx-auto bg-white">
           <div className="bg-custom-red lg:px-100px px-6 py-10 ">
             <Image
