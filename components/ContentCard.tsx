@@ -16,13 +16,13 @@ const ContentCard = ({ article }: CardProps) => {
   // console.log(titleSlug);
 
   return (
-    <Card className="w-min border-none mb-12">
-      <CardHeader className="h-60 w-[350px] border relative">
+    <Card className="w-full border-none mb-12">
+      <CardHeader className="h-60 min-w-[350px] w-full border relative">
         <Image
           src={`${attributes.MediaFiles.data[0].attributes.formats.small.url}`}
           alt={""}
           fill
-          className="object-cover absolute"
+          className="object-cover absolute object-center"
         />
       </CardHeader>
 
