@@ -3,9 +3,9 @@ import { Button } from "./ui/button";
 
 const Story = () => {
   return (
-    <section className="bg-[url('/story.webp')] bg-no-repeat bg-center bg-cover bg-black w-full flex-center">
+    <section className="bg-gray-300 w-full flex-center">
       <div className="max-w-screen-xxl w-full mx-auto  lg:px-100px lg:py-[120px] p-10 text-white">
-        <div className="inset-0 bg-black-900 opacity-100 backdrop-filter backdrop-blur-lg backdrop-brightness-50 rounded-xl">
+        <div className="inset-0 bg-[##33333] opacity-100 backdrop-filter backdrop-blur-lg backdrop-brightness-50 rounded-xl">
           <div className=" flex flex-col justify-center items-center p-6 lg:px-40 lg:py-10">
             <p className="text-2xl lg:text-5xl text-center font-bold mb-6">
               Unleash Your Voice, Ignite the Headlines

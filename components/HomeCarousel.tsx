@@ -54,8 +54,8 @@ const HomeCarousel = () => {
   };
 
   return (
-    <div className="bg-[url('/carousel/carousel.webp')] bg-no-repeat bg-center bg-cover bg-black w-full flex-center">
-      <div className="max-w-screen-xxl px-90px pt-28 pb-100px w-full mx-auto text-white">
+    <div className="w-full flex-center">
+      <div className="max-w-screen-xxl px-4 lg:px-90px pt-28 pb-100px w-full mx-auto text-black">
         <p className="text-3xl lg:text-5xl text-center font-bold mb-6 lg:mb-12">
           Categories
         </p>
@@ -74,7 +74,7 @@ const HomeCarousel = () => {
             return (
               <div
                 key={index}
-                className={`bg-gray-300  relative ${
+                className={`bg-gray-300 relative ${
                   currentSlide
                     ? "w-[320px] h-[400px]"
                     : "w-[220px] h-[340px]"
@@ -107,7 +107,7 @@ const HomeCarousel = () => {
         <div className="mt-8 flex gap-4 justify-center">
           <button onClick={handlePrevious} className="border-none outline-none">
             <Image
-              src="/carousel/leftBtn.png"
+              src="/carousel/leftBtn.svg"
               alt="left button"
               width={30}
               height={30}
@@ -115,7 +115,7 @@ const HomeCarousel = () => {
           </button>
           <button onClick={handleNext} className="border-none outline-none">
             <Image
-              src="/carousel/rightBtn.png"
+              src="/carousel/rightBtn.svg"
               alt="left button"
               width={30}
               height={30}
@@ -134,26 +134,26 @@ const slideData = [
     title: "Entertainment",
     content:
       "The latest entertainment news, TV, showbiz stories and gossip from Nigeria and worldwide.",
-    imgSrc: "/carousel/carouselImg1.webp",
+    imgSrc: "/carousel/Img1.webp",
   },
   {
     title: "Art",
     content: "Art content",
-    imgSrc: "/carousel/carouselImg2.webp",
+    imgSrc: "/carousel/Img2.webp",
   },
   {
     title: "Dance",
     content: "Music content",
-    imgSrc: "/carousel/carouselImg3.webp",
+    imgSrc: "/carousel/Img3.webp",
   },
   {
     title: "Music",
     content: "Dance content",
-    imgSrc: "/carousel/carouselImg4.webp",
+    imgSrc: "/carousel/Img4.webp",
   },
   {
     title: "Fashion",
     content: "Fasion content",
-    imgSrc: "/carousel/carouselImg5.webp",
+    imgSrc: "/carousel/Img5.webp",
   },
 ];

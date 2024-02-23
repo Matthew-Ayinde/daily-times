@@ -7,6 +7,7 @@ import { IArticle } from "@/types/articles";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
 import ContentCard from "./ContentCard";
+import Banner from "./Banner";
 
 const HomePage = () => {
   const isFetching = useIsFetching();
@@ -56,7 +57,14 @@ const HomePage = () => {
       </div>
 
       <>
-        <AdvertismentSection />
+        {/* <AdvertismentSection /> */}
+
+        {/* Getting content from backend */}
+
+        {/* {articlesData?.slice(0, 3).map((article) => (
+          <Banner article={article} key={article.id} />
+        ))} */}
+        <Banner />
 
         <div className="mt-52 flex flex-col justify-center items-center w-full">
           <p className="font-bold text-center text-3xl lg:text-5xl mb-20">
