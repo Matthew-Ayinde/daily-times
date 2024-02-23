@@ -1,15 +1,12 @@
 "use client";
 
 import { BASE_URL } from "@/lib/constants";
-import { deslugify } from "@/lib/helpers";
 import { IArticle, IArticleRoot } from "@/types/articles";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Page = ({ params }: { params: { slug: string } }) => {
-  // const originalTitle = deslugify(params.slug);
   const originalTitle = params.slug;
-  // console.log(originalTitle);
   const [filteredArticle, setFilteredArticle] = useState<IArticle | null>(null);
 
   const fetchArticles = async () => {
@@ -29,7 +26,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
       } else {
         setFilteredArticle(null);
       }
-      console.log(filtered);
+      // console.log(filtered);
     } catch (error) {
       console.error("Error fetching articles:", error);
     }
