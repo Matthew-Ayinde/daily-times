@@ -8,8 +8,6 @@ import React, { useState } from "react";
 import ContentCard from "@/components/ContentCard";
 
 const CategoryRoute = ({ params }: { params: { category: string } }) => {
-<<<<<<< HEAD
-=======
   // console.log(params.category);
   const isFetching = useIsFetching();
 
@@ -47,7 +45,6 @@ const CategoryRoute = ({ params }: { params: { category: string } }) => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
->>>>>>> d96975bed9793aa436fba84d7c138a4180a55eaf
   return (
     <div>
       <h1>categoryName: {params.category}</h1>
