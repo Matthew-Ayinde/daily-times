@@ -58,11 +58,13 @@ const HomePage = () => {
       <>
         <AdvertismentSection />
 
-        <div className="mt-52">
-          <p className="font-bold text-center text-3xl lg:text-5xl mb-20">Trending</p>
+        <div className="mt-52 flex flex-col justify-center items-center w-full">
+          <p className="font-bold text-center text-3xl lg:text-5xl mb-20">
+            Trending
+          </p>
 
           {isSuccess && articlesData && (
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {articlesData.map((article) => (
                 <ContentCard article={article} key={article.id} />
               ))}

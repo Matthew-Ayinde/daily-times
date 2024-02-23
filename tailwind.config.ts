@@ -49,6 +49,9 @@ const config = {
         "100px": "100px",
         "90px": "90px",
       },
+      fontSize: {
+        "32px": ["32px", "32px"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
