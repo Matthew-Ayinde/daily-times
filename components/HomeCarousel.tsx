@@ -76,8 +76,8 @@ const HomeCarousel = () => {
                 key={index}
                 className={`bg-gray-300  relative ${
                   currentSlide
-                    ? "min-w-[320px] min-h-[400px]"
-                    : "min-w-[220px] min-h-[340px]"
+                    ? "w-[320px] h-[400px]"
+                    : "w-[220px] h-[340px]"
                 }`}
               >
                 <Image
