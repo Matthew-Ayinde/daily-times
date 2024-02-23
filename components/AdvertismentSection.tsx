@@ -6,7 +6,7 @@ import { IArticleRoot } from "../types/articles";
 import { BASE_URL } from "../lib/constants";
 import axios from "axios";
 
-const AdvertismentSection = () => {
+const  AdvertismentSection = () => {
   const [windowWidth, setWindowWidth] = useState<number | undefined>(undefined);
   const [fetchedArticles, setFetchedArticles] = useState([]);
   const [lastArticleSelected, setLastArticleSelected] = useState<any>({});

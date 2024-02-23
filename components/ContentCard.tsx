@@ -26,7 +26,7 @@ const ContentCard = ({ article }: CardProps) => {
         />
       </CardHeader>
 
-      <CardContent className="min-h-100px mt-4 pr-5">
+      <CardContent className="min-h-100px mt-4 pr-5 text-center">
         <Link
           href={`${attributes.category}`}
           className="text-custom-red text-xs font-normal"
