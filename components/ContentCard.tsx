@@ -21,8 +21,6 @@ const ContentCard = ({ article }: CardProps) => {
         <Image
           src={`${attributes.MediaFiles.data[0].attributes.formats.small.url}`}
           alt={""}
-          // width={350}
-          // height={240}
           fill
           className="object-cover absolute"
         />
@@ -38,11 +36,11 @@ const ContentCard = ({ article }: CardProps) => {
         <p className="text-custom-black leading-relaxed my-2 font-bold h-14 overflow-hidden line-clamp-2">
           {attributes.Title}
         </p>
-        <p className="text-custom-black leading-relaxed my-2">
+        {/* <p className="text-custom-black leading-relaxed my-2">
           {attributes.Details?.length > 60
             ? `${attributes.Details?.slice(0, 60)}...`
             : attributes.Details}
-        </p>
+        </p> */}
         <Link href={`${attributes.category}/${id}`}>
           <p className="text-custom-red hover:underline mt-1 block font-bold">
             Read More

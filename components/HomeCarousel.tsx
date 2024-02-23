@@ -51,7 +51,7 @@ const HomeCarousel = () => {
       className="bg-[url('/carousel/carousel.webp')] bg-no-repeat bg-center bg-cover bg-black w-full flex-center"
       //   style={{ height: 800 }}
     >
-      <div className="max-w-screen-xxl px-90px pt-28 pb-100px w-full mx-auto text-white">
+      <div className="max-w-screen-xxl lg:px-90px px-6 pt-28 pb-100px w-full mx-auto text-white">
         <p className="text-3xl lg:text-5xl text-center font-bold mb-6 lg:mb-12">
           Categories
         </p>
