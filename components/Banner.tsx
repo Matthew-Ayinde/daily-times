@@ -26,7 +26,7 @@ const Banner = () => {
             className="object-cover absolute"
           />
         </div>
-        <div className="flex flex-col items-center lg:justify-center gap-2 lg:items-start lg:w-2/5 px-10 lg:px-0">
+        <div className="flex flex-col items-center lg:justify-center gap-2 lg:items-start lg:w-2/5">
           <p className="text-sm">Category</p>
           <p className="text-xs text-custom-red">12 Februrary 2024</p>
           <p className="text-xl lg:text-3xl font-semibold lg:text-start text-center">

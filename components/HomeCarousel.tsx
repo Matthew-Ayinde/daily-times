@@ -55,7 +55,7 @@ const HomeCarousel = () => {
 
   return (
     <div className="w-full flex-center">
-      <div className="max-w-screen-xxl px-90px pt-28 pb-100px w-full mx-auto text-black">
+      <div className="max-w-screen-xxl px-4 lg:px-90px pt-28 pb-100px w-full mx-auto text-black">
         <p className="text-3xl lg:text-5xl text-center font-bold mb-6 lg:mb-12">
           Categories
         </p>
@@ -74,10 +74,10 @@ const HomeCarousel = () => {
             return (
               <div
                 key={index}
-                className={`bg-gray-300  relative ${
+                className={`bg-gray-300 relative ${
                   currentSlide
-                    ? "w-[100px] h-[460px]"
-                    : "w-[50px] h-[380px]"
+                    ? "w-[320px] h-[400px]"
+                    : "w-[220px] h-[340px]"
                 }`}
               >
                 <Image
