@@ -107,7 +107,7 @@ const HomeCarousel = () => {
         <div className="mt-8 flex gap-4 justify-center">
           <button onClick={handlePrevious} className="border-none outline-none">
             <Image
-              src="/carousel/leftBtn.png"
+              src="/carousel/leftBtn.svg"
               alt="left button"
               width={30}
               height={30}
@@ -115,7 +115,7 @@ const HomeCarousel = () => {
           </button>
           <button onClick={handleNext} className="border-none outline-none">
             <Image
-              src="/carousel/rightBtn.png"
+              src="/carousel/rightBtn.svg"
               alt="left button"
               width={30}
               height={30}
