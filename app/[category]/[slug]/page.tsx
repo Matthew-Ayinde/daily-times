@@ -40,9 +40,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }, [originalTitle]);
 
   return (
-    <div>
-      <h1>Slug: {params.slug}</h1>
-
+    <div className="max-w-screen-xxl lg:px-100px px-6 pt-16 pb-[136px] w-full mx-auto">
       <div className="">{parse(markdownData, { trim: true })}</div>
 
       {/* <div className="">
