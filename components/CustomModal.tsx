@@ -21,7 +21,7 @@ const CustomModal = () => {
             </p>
           </div>
 
-          <div className="lg:pl-100px lg:pr-44 pr-6 lg:pt-20 lg:pb-48 pt-10 pb-16">
+          <div className="lg:pl-100px lg:pr-44 pr-6 pl-8 lg:pt-20 lg:pb-48 pt-10 pb-16">
             <p>
                 We and our technology partners ask for your consent to the use of cookies to store and access personal data on your<br />
                 device; for example: unique identifiers and your browsing patterns. This may be used for advert and content<br />
