@@ -26,11 +26,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <TanstackProvider>
-          <Navbar />
+          {/* <Navbar /> */}
 
           <main>{children}</main>
 
-          <Footer />
+          {/* <Footer /> */}
         </TanstackProvider>
       </body>
     </html>

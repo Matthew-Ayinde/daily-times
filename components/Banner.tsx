@@ -12,7 +12,7 @@ import { IArticle } from "@/types/articles";
 const Banner = () => {
   return (
     <div className="flex flex-col gap-10 px-4 lg:px-20">
-      <div className="w-full h-40 flex items-center justify-center bg-custom-gray lg:mb-16 mb-10 lg:mt-16 mt-10">
+      <div className="w-full h-40 flex items-center justify-center bg-custom-offwhite lg:mb-16 mb-10 lg:mt-16 mt-10">
         <p className="text-custom-black text-xl text-center font-medium">
           ADVERTISEMENT SECTION
         </p>
