@@ -63,7 +63,7 @@ const Navbar = () => {
                 <Link
                   href={`/${nav.url}`}
                   onClick={() => setOpen(false)}
-                  className={`uppercase text-lg text-custom-black font-semibold cursor-pointer ${
+                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer ${
                     isActive
                       ? "text-custom-green font-medium"
                       : "text-custom-darkgray"

@@ -19,7 +19,7 @@ interface CardProps {
 const NewCardComponent = ({ article }: CardProps) => {
   return (
     <Card className="w-min border-none mb-12">
-      <CardHeader className="h-60 w-[350px] border relative">
+      <CardHeader className="h-60 w-[350px] relative">
         <Image
           src={article.img}
           alt={""}
