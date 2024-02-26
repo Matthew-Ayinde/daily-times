@@ -23,8 +23,12 @@ const config = {
       },
       colors: {
         "custom-red": "#7A0000",
+        "custom-brightred": "#E72B1E",
         "custom-black": "#121212",
-        "custom-gray": "#EBE8E8",
+        "custom-offwhite": "#EBE8E8",
+        "custom-white": "#F4F4F4",
+        "custom-gray": "#333333",
+        "custom-lightgray": "#BDBDBD",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -48,6 +52,11 @@ const config = {
       spacing: {
         "100px": "100px",
         "90px": "90px",
+        "54px": "54px",
+      },
+      fontSize: {
+        "32px": ["32px", "32px"],
+        "28px": ["28px", "28px"],
       },
     },
   },

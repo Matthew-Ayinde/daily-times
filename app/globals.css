@@ -16,3 +16,10 @@
   display: flex !important;
   align-items: center;
 }
+
+.active-pagination {
+  background-color: rgb(185 28 28);
+  border: 2px solid rgb(185 28 28);
+  border-radius: 15%;
+  color: white;
+}

@@ -76,12 +76,12 @@ const Navbar = () => {
           })}
 
           <Button className="bg-custom-black px-12 py-[14px] rounded text-white lg:hidden flex items-center justify-cente">
-            Submit a story
+            Subscribe
           </Button>
         </ul>
 
         <Button className="bg-custom-black px-12 py-[14px] rounded text-white hidden lg:flex lg:items-center lg:justify-center">
-          Submit a story
+          Subscribe
         </Button>
       </div>
     </div>

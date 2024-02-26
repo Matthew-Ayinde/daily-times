@@ -32,13 +32,14 @@ const CustomFileInput: React.FC<CustomFileInputProps> = ({ onChange }) => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-md">
-      <div className="border-2 border-gray-300 border-dashed">
+    <div className="bg-custom-white rounded">
+      <div className="border-2 border-gray-200 border-dashed lg:text-base text-sm">
         <div
-          className="cursor-pointer text-center h-44 flex flex-col items-center justify-center"
+          className="cursor-pointer text-center h-32 flex flex-col items-center justify-center text-custom-gray"
           onClick={handleClick}
         >
-          Drag & drop files here or <span className="text-red-500">browse</span>
+          Drag & drop files here or{" "}
+          <span className="text-custom-red font-medium">browse</span>
         </div>
         <input
           ref={inputRef}
@@ -51,29 +52,31 @@ const CustomFileInput: React.FC<CustomFileInputProps> = ({ onChange }) => {
       </div>
 
       {fileList.length > 0 && (
-        <div className="px-8 py-6">
-          <p className="font-bold">Uploaded Files:</p>
-          <ul>
-            {fileList.map((file, index) => (
-              <li key={index}>
-                {file.name}{" "}
-                <button
-                  onClick={() => handleFileRemove(index)}
-                  className="text-red-500 ml-2"
-                >
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+        <>
+          <div className="px-8 py-6">
+            <p className="font-bold">Uploaded Files:</p>
+            <ul>
+              {fileList.map((file, index) => (
+                <li key={index}>
+                  {file.name}{" "}
+                  <button
+                    onClick={() => handleFileRemove(index)}
+                    className="text-red-500 ml-2"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <div className="mt-4">
-        <p className="mt-1 text-sm text-gray-600">
-          ({fileList.length}/{fileList.length} files)
-        </p>
-      </div>
+          <div className="mt-4">
+            <p className="mt-1 text-sm text-gray-600">
+              ({fileList.length}/{fileList.length} files)
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 };
