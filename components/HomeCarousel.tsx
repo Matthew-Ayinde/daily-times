@@ -65,7 +65,7 @@ const HomeCarousel = () => {
           afterChange={(nextSlide: number) => {
             setCurrentSlideNumber(nextSlide);
           }}
-          className="w-full min-h-[400px]"
+          className="w-full h-[480px]"
           ref={sliderRef}
         >
           {slideData.map((data, index) => {
@@ -75,9 +75,7 @@ const HomeCarousel = () => {
               <div
                 key={index}
                 className={`bg-gray-300 relative ${
-                  currentSlide
-                    ? "w-[320px] h-[400px]"
-                    : "w-[220px] h-[340px]"
+                  currentSlide ? "w-[320px] h-[480px]" : "w-[220px] h-[340px]"
                 }`}
               >
                 <Image
@@ -91,7 +89,7 @@ const HomeCarousel = () => {
           })}
         </Slider>
 
-        <div className="mt-8">
+        <div className="mt-8 min-h-[85px]">
           {slideData.map((data, index) => (
             <div key={index}>
               {currentSlideNumber === index && (
@@ -104,7 +102,7 @@ const HomeCarousel = () => {
           ))}
         </div>
 
-        <div className="mt-8 flex gap-4 justify-center">
+        <div className="mt-4 flex gap-4 justify-center">
           <button onClick={handlePrevious} className="border-none outline-none">
             <Image
               src="/carousel/leftBtn.svg"

@@ -64,7 +64,7 @@ const HomePage = () => {
         {/* {articlesData?.slice(0, 3).map((article) => (
           <Banner article={article} key={article.id} />
         ))} */}
-        <Banner />
+        {/* <Banner /> */}
 
         <div className="mt-52 flex flex-col justify-center items-center w-full">
           <p className="font-bold text-center text-3xl lg:text-5xl mb-20">
