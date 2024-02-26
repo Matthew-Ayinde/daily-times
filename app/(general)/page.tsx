@@ -6,13 +6,11 @@ import Banner from "@/components/Banner";
 export default function Home() {
   return (
     <div className="">
-      {/* <HomePage /> */}
+      <HomePage />
 
-      <Banner />
+      {/* <Banner /> */}
 
       <HomeCarousel />
-
-      
 
       <Story />
     </div>

@@ -19,7 +19,7 @@ const ContentCard = ({ article }: CardProps) => {
     <Card className="w-full border-none mb-12">
       <CardHeader className="h-60 min-w-[350px] w-full border relative">
         <Image
-          src={`${attributes.MediaFiles.data[0].attributes.formats.small.url}`}
+          src={``}
           alt={""}
           fill
           className="object-cover absolute object-center"
@@ -28,10 +28,12 @@ const ContentCard = ({ article }: CardProps) => {
 
       <CardContent className="min-h-100px mt-4 pr-5 text-center">
         <Link
-          href={`${attributes.category}`}
+          // href={`${attributes.category}`}
+          href={``}
           className="text-custom-red text-xs font-normal"
         >
-          {attributes.category}
+          {/* {attributes.category} */}
+          add category Link name
         </Link>
         <p className="text-custom-black leading-relaxed my-2 font-bold h-14 overflow-hidden line-clamp-2">
           {attributes.Title}
