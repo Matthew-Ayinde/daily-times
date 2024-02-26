@@ -51,9 +51,9 @@ const Banner = () => {
           </div>
 
           <div className=" flex flex-col lg:flex-row items-center lg:justify-between justify-center gap-4 lg:gap-10">
-            {attributes?.slice(0, 3).map((content, index) => (
+            {/* {attributes?.slice(0, 3).map((content, index) => (
               <NewCardComponent article={content} key={index} />
-            ))}
+            ))} */}
           </div>
 
           <div className="mt-40 lg:mt-52 flex flex-col justify-center items-center w-full">
@@ -62,9 +62,9 @@ const Banner = () => {
             </p>
 
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
-              {attributes.map((content, index) => (
+              {/* {attributes.map((content, index) => (
                 <NewCardComponent article={content} key={index} />
-              ))}
+              ))} */}
             </ul>
           </div>
         </>

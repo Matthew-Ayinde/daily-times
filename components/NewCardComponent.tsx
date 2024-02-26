@@ -16,17 +16,17 @@ const NewCardComponent = ({ article }: CardProps) => {
       <Card className="w-min border-none mb-12">
         <CardHeader className="h-60 w-[350px] relative border">
           <Image
-            src={
-              attributes.media_files.data.attributes.formats.small?.url ??
-              attributes.media_files.data.attributes.formats.thumbnail.url
-            }
+            src={attributes.media_files.data.attributes.url}
             alt={""}
             fill
             className="object-cover absolute object-center"
           />
         </CardHeader>
         <CardContent className="min-h-100px mt-4 pr-5 text-center">
-          <Link href="" className="text-custom-red text-xs font-normal capitalize">
+          <Link
+            href=""
+            className="text-custom-red text-xs font-normal capitalize"
+          >
             {attributes.category.data.attributes.name}
           </Link>
           <p className="text-custom-black leading-relaxed my-2 font-bold h-14 overflow-hidden line-clamp-2">

@@ -9,6 +9,7 @@ import parse from "html-react-parser";
 import Image from "next/image";
 import SinglePageDetails from "@/components/SinglePageDetails";
 import SubscribeComponent from "@/components/SubscribeComponent";
+import { links } from "@/data/navigation";
 
 const Page = ({ params }: { params: { slug: string } }) => {
   const originalTitle = params.slug;
@@ -86,26 +87,3 @@ const Page = ({ params }: { params: { slug: string } }) => {
 };
 
 export default Page;
-
-export const links = [
-  {
-    name: "website-link",
-    url: "www.example.com",
-    imgSrc: "/svg/link-black.svg",
-  },
-  {
-    name: "linkedIn",
-    url: "www.linkedin.com",
-    imgSrc: "/svg/linkedIn-black.svg",
-  },
-  {
-    name: "twitter",
-    url: "www.twitter.com",
-    imgSrc: "/svg/twitter-black.svg",
-  },
-  {
-    name: "facebook",
-    url: "www.facebook.com",
-    imgSrc: "/svg/facebook-black.svg",
-  },
-];
