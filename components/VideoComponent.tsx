@@ -2,10 +2,21 @@
 
 import React from "react";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import ReactPlayer from "react-player";
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const VideoComponent = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center mt-12 space-y-20">
       {videoLinks.map((video, index) => (
@@ -14,67 +25,53 @@ const VideoComponent = () => {
           className="flex space-x-4 h-[340px] items-center justify-center "
         >
           <div className="flex-1">
-            {/* <Image 
-                    alt=''
-                    src={""}
-                    width={320}
-                    height={340}
-                    className="bg-green-500"
-                    /> */}
-            <ReactPlayer
-              url={video.url}
-              width="290px"
-              height="380px"
-              controls
-            />
-            {/* <video ref={""} src={""} width="100%" controls /> */}
+            {loading ? (
+              <Skeleton className="w-[290px] h-[380px] rounded-xl bg-gray-300" />
+            ) : (
+              <ReactPlayer
+                url={video.url}
+                width="290px"
+                height="380px"
+                controls
+              />
+            )}
           </div>
           <div className="flex flex-col space-y-4">
-            {/* <Button className="rounded-full"> */}
             <Image
               alt=""
-              src={"/videos/likeImage.webp"}
+              src={"/videos/likeImage.svg"}
               width={50}
               height={50}
               className="hover:cursor-pointer"
             />
-            {/* </Button> */}
-            {/* <Button className="rounded-full"> */}
             <Image
               alt=""
-              src={"/videos/dislikeImage.webp"}
+              src={"/videos/dislikeImage.svg"}
               width={50}
               height={50}
               className="hover:cursor-pointer"
             />
-            {/* </Button> */}
-            {/* <Button className="rounded-full"> */}
             <Image
               alt=""
-              src={"/videos/comment.webp"}
+              src={"/videos/commentImage.svg"}
               width={50}
               height={50}
               className="hover:cursor-pointer"
             />
-            {/* </Button> */}
-            {/* <Button className="rounded-full"> */}
             <Image
               alt=""
-              src={"/videos/shareImage.webp"}
+              src={"/videos/shareImage.svg"}
               width={50}
               height={50}
               className="hover:cursor-pointer"
             />
-            {/* </Button> */}
-            {/* <Button className="rounded-full"> */}
             <Image
               alt=""
-              src={"/videos/options.webp"}
+              src={"/videos/optionsImage.svg"}
               width={50}
               height={50}
               className="hover:cursor-pointer"
             />
-            {/* </Button> */}
           </div>
         </div>
       ))}
