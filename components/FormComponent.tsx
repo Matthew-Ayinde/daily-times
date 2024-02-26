@@ -63,7 +63,7 @@ const FormComponent = () => {
   }
 
   return (
-    <div className="lg:px-20 px-6 lg:pt-20 pt-8 lg:pb-52 pb-20 bg-white">
+    <div className="lg:px-20 px-6 lg:pt-20 pt-8 lg:pb-52 pb-20 bg-white flex flex-col items-center">
       <div className="max-w-[800px] w-full">
         <div className="">
           <p className="text-custom-gray mb-8 text-sm lg:text-base">
@@ -318,7 +318,7 @@ const FormComponent = () => {
             />
 
             {/* button */}
-            <div className="flex items-center w-full">
+            <div className="flex justify-center w-full">
               <Button
                 type="submit"
                 className="text-white py-5 rounded-[10px] w-[300px] h-14 lg:text-base text-sm mx-auto lg:mx-0"
