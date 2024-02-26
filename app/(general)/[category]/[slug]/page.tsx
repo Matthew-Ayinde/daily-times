@@ -6,6 +6,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import parse from "html-react-parser";
+import Image from "next/image";
+import SinglePageDetails from "@/components/SinglePageDetails";
+import SubscribeComponent from "@/components/SubscribeComponent";
+import { links } from "@/data/navigation";
 
 const Page = ({ params }: { params: { slug: string } }) => {
   const originalTitle = params.slug;
@@ -28,7 +32,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
       } else {
         setFilteredArticle(null);
       }
-      // console.log(filtered);
+      console.log(filtered);
     } catch (error) {
       console.error("Error fetching articles:", error);
     }
@@ -40,8 +44,39 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }, [originalTitle]);
 
   return (
-    <div className="max-w-screen-xxl lg:px-100px px-6 pt-16 pb-[136px] w-full mx-auto">
-      <div className="">{parse(markdownData, { trim: true })}</div>
+    <div className="max-w-screen-xxl w-full mx-auto">
+      <SinglePageDetails />
+
+      <div className="mx-auto max-w-[768px] w-full pt-6 px-6 lg:pb-28 pb-7">
+        <div className="w-full mb-16">
+          {parse(markdownData, { trim: true })}
+        </div>
+
+        <div className="w-full pb-12 border-b border-custom-gray">
+          <p className="font-semibold text-lg">Share this post</p>
+
+          <div className="flex items-end justify-between gap-4 mt-4">
+            <div className="flex items-center gap-2">
+              {links.map((link, index) => (
+                <div
+                  key={index}
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-custom-white"
+                >
+                  <Image src={link.imgSrc} alt={""} width={24} height={24} />
+                </div>
+              ))}
+            </div>
+
+            <div className="px-2 py-1 flex-center bg-custom-white">
+              <p className="text-sm font-semibold">Category Name</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <SubscribeComponent />
+
+      {/* related articles */}
 
       {/* <div className="">
         <h3>{filteredArticle?.attributes.Title ?? "Title"}</h3>
