@@ -6,11 +6,7 @@ import AdvertismentSection from "./AdvertismentSection";
 import { IArticle } from "@/types/articles";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
-import ContentCard from "./ContentCard";
 import NewCardComponent from "./NewCardComponent";
-import Image from "next/image";
-import Link from "next/link";
-import parse from "html-react-parser";
 
 const HomePage = () => {
   const isFetching = useIsFetching();
@@ -21,7 +17,7 @@ const HomePage = () => {
       const response = await axios.get(`${BASE_URL}/api/articles?populate=*`);
       const articles: IArticle[] = response.data.data;
 
-      console.log("articles", articles);
+      // console.log("articles", articles);
       setArticles(articles);
 
       const filteredTrendingItems = filterByTag(articles, "Trending");
@@ -49,7 +45,7 @@ const HomePage = () => {
   } = useQuery<IArticle[], Error>({
     queryKey: ["articles"],
     queryFn: fetchArticles,
-    // staleTime: 3600000,
+    staleTime: 3600000,
   });
 
   // if (isFetching) return <div>Fetching...</div>;

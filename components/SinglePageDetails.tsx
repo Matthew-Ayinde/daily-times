@@ -4,7 +4,7 @@ import React from "react";
 const SinglePageDetails = () => {
   return (
     <div className="lg:px-100px px-6 lg:py-28 py-7 w-full">
-      <div className="flex items-center gap-2 text-custom-gray mb-6 text-sm lg:text-base">
+      <div className="flex items-center gap-2 text-custom-gray mb-6 text-sm lg:text-base capitalize">
         <p>Category</p>{" "}
         <Image src={"/svg/chevron-right.svg"} alt={""} width={16} height={16} />{" "}
         <p className="font-semibold">News</p>
