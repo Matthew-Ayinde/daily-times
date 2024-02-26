@@ -11,6 +11,7 @@ import SinglePageDetails from "@/components/SinglePageDetails";
 import SubscribeComponent from "@/components/SubscribeComponent";
 import { links } from "@/data/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
 
 const Page = ({ params }: { params: { slug: string } }) => {
   const originalTitle = params.slug;
@@ -37,7 +38,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
         setFilteredArticle(null);
         setLoading(false);
       }
-      console.log(filtered);
+      // console.log(filtered);
     } catch (error) {
       setLoading(false);
       console.error("Error fetching articles:", error);
@@ -52,9 +53,9 @@ const Page = ({ params }: { params: { slug: string } }) => {
   return (
     <div className="max-w-screen-xxl w-full mx-auto">
       <>
-        <SinglePageDetails />
+        <SinglePageDetails article={filteredArticle} loading={loading} />
 
-        <div className="mx-auto max-w-[768px] w-full pt-6 px-6 lg:pb-28 pb-7">
+        <div className="mx-auto max-w-[768px] w-full pt-6 px-6 lg:pb-28 pb-10">
           <div className="w-full mb-16">
             {(loading || !filteredArticle) && (
               <div className="space-y-2">
@@ -76,37 +77,41 @@ const Page = ({ params }: { params: { slug: string } }) => {
             )}
           </div>
 
-          <div className="w-full pb-12 border-b border-custom-gray">
-            <p className="font-semibold text-lg">Share this post</p>
+          {filteredArticle && (
+            <div className="w-full pb-12 border-b border-custom-gray">
+              <Link href={""} className="font-semibold text-lg">
+                Share this post
+              </Link>
 
-            <div className="flex items-end justify-between gap-4 mt-4">
-              <div className="flex items-center gap-2">
-                {links.map((link, index) => (
-                  <div
-                    key={index}
-                    className="w-8 h-8 flex items-center justify-center rounded-full bg-custom-white"
-                  >
-                    <Image src={link.imgSrc} alt={""} width={24} height={24} />
-                  </div>
-                ))}
-              </div>
+              <div className="flex items-end justify-between gap-4 mt-4">
+                <div className="flex items-center gap-2">
+                  {links.map((link, index) => (
+                    <div
+                      key={index}
+                      className="w-8 h-8 flex items-center justify-center rounded-full bg-custom-white"
+                    >
+                      <Image
+                        src={link.imgSrc}
+                        alt={""}
+                        width={24}
+                        height={24}
+                      />
+                    </div>
+                  ))}
+                </div>
 
-              <div className="px-2 py-1 flex-center bg-custom-white">
-                <p className="text-sm font-semibold">Category Name</p>
+                <div className="px-2 py-1 flex-center bg-custom-white">
+                  <p className="text-sm font-semibold capitalize">
+                    {filteredArticle?.attributes.category.data.attributes.name}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         <SubscribeComponent />
       </>
-
-      {/* related articles */}
-
-      {/* <div className="">
-        <h3>{filteredArticle?.attributes.Title ?? "Title"}</h3>
-        <h3>{filteredArticle?.attributes.Details ?? "Details"}</h3>
-      </div> */}
     </div>
   );
 };
