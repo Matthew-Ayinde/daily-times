@@ -1,10 +1,10 @@
-import VideoPage from "@/components/VideoPage";
+import VideoComponent from "@/components/VideoComponent";
 import React from "react";
 
 const Page = () => {
   return (
     <div>
-      <VideoPage />
+      <VideoComponent />
     </div>
   );
 };

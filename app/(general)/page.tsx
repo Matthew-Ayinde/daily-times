@@ -12,6 +12,8 @@ export default function Home() {
 
       <HomeCarousel />
 
+      
+
       <Story />
     </div>
   );
