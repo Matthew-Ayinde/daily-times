@@ -12,7 +12,7 @@ import NewCardComponent from "./NewCardComponent";
 
 const Banner = () => {
   return (
-    <div className="max-w-screen-xxl lg:px-100px px-6 pt-16 pb-[136px] w-full mx-auto bg-blue-500">
+    <div className="max-w-screen-xxl lg:px-100px px-6 pt-16 pb-[136px] w-full mx-auto">
       <div className="w-full h-40 flex items-center justify-center bg-custom-offwhite lg:mb-16 mb-10">
         <p className="text-custom-black text-xl text-center font-medium">
           ADVERTISEMENT SECTION
