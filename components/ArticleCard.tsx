@@ -17,7 +17,7 @@ const ArticleCard = ({ article }: Props) => {
     <li className="w-80 border-2 border-blue-900 rounded-lg overflow-hidden shadow-lg shadow-gray-500/50 min-h-[396px]">
       <div className="h-40 w-80 border relative">
         <Image
-          src={`${attributes.MediaFiles.data[0].attributes.formats.small.url}`}
+          src={`${attributes.media_files.data.attributes.url}`}
           alt={""}
           // height={128}
           // width={320}
@@ -34,7 +34,7 @@ const ArticleCard = ({ article }: Props) => {
 
         <h3 className="mt-4 font-bold">{attributes.Title}</h3>
         <p className="mt-3 text-gray-500">{publishedAt}</p>
-        <p className="mt-4 text-gray-800 line-clamp-3">{attributes.Details}</p>
+        {/* <p className="mt-4 text-gray-800 line-clamp-3">{attributes.Details}</p> */}
 
         <div className="mt-5 flex justify-end">
           <Link href={""} className="text-right font-semibold">
