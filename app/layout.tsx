@@ -48,7 +48,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <TanstackProvider>
-          <main>{children}</main>
+          <>{children}</>
         </TanstackProvider>
       </body>
     </html>
