@@ -2,6 +2,7 @@ import { IArticle } from "@/types/articles";
 import Image from "next/image";
 import React from "react";
 import { Skeleton } from "./ui/skeleton";
+import { calculateReadingTime, formatDate } from "@/lib/helpers";
 
 interface Props {
   article: IArticle | null;
@@ -65,11 +66,21 @@ const SinglePageDetails = ({ article, loading }: Props) => {
               </div>
 
               <div className="text-sm">
-                <p className="font-semibold">Full name</p>
+                <p className="font-semibold capitalize">
+                  {
+                    article.attributes.content_creator.data.attributes
+                      .first_name
+                  }{" "}
+                  {article.attributes.content_creator.data.attributes.last_name}
+                </p>
                 <div className="flex items-center gap-2">
-                  <p>11 Jan 2022</p>
+                  <p>{formatDate(article.attributes.publishedAt)}</p>
                   <p>•</p>
-                  <p>5 min read</p>
+                  <p>{`${calculateReadingTime(article.attributes.content)} min${
+                    calculateReadingTime(article.attributes.content) > 1
+                      ? "s"
+                      : ""
+                  } read`}</p>
                 </div>
               </div>
             </div>

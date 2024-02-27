@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader } from "./ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { IArticle } from "@/types/articles";
+import { formatDate } from "@/lib/helpers";
 
 interface CardProps {
   article: IArticle;
@@ -32,7 +33,9 @@ const NewCardComponent = ({ article }: CardProps) => {
           <p className="text-custom-black leading-relaxed my-2 font-bold h-14 overflow-hidden line-clamp-2">
             {attributes.Title}
           </p>
-          <p className="text-xs text-custom-red">12 Februrary 2024</p>
+          <p className="text-xs text-custom-red">
+            {formatDate(attributes.publishedAt)}
+          </p>
           {/* <p className="text-custom-black leading-relaxed my-2">
                 {attributes.Details?.length > 60
                     ? `${attributes.Details?.slice(0, 60)}...`

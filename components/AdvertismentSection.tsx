@@ -5,6 +5,7 @@ import Link from "next/link";
 import NewCardComponent from "./NewCardComponent";
 import parse from "html-react-parser";
 import { shuffle } from "lodash";
+import { formatDate } from "@/lib/helpers";
 
 interface Props {
   articles: IArticle[];
@@ -33,7 +34,9 @@ const AdvertismentSection = ({ articles }: Props) => {
               <p className="text-sm capitalize">
                 {article.attributes.category.data.attributes.name}
               </p>
-              <p className="text-xs text-custom-red">12 Februrary 2024</p>
+              <p className="text-xs text-custom-red">
+                {formatDate(article.attributes.publishedAt)}
+              </p>
               <p className="text-xl lg:text-3xl font-semibold lg:text-start text-center overflow-hidden line-clamp-2">
                 {article.attributes.Title}
               </p>
@@ -41,7 +44,9 @@ const AdvertismentSection = ({ articles }: Props) => {
                 {parse(article.attributes.content, { trim: true })}
               </p>
 
-              <Link href="">
+              <Link
+                href={`${article.attributes.category.data.attributes.name}/${article.id}`}
+              >
                 <p className="text-custom-red hover:underline mt-1 block font-bold">
                   Read More
                 </p>
