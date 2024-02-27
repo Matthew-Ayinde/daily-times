@@ -12,36 +12,43 @@ export interface IArticle {
   attributes: IAttributes;
 }
 
-export interface TagAtrrib {
+export interface IAttributes {
+  Title: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  category: IArticleCategory;
+  content: string;
+  media_files: IArticleMediaFiles;
+  content_creator: IArticleContentCreator;
+  tags: TagsData;
+}
+
+
+export interface IArticleCategory {
+  data: IArticleCategoryData;
+}
+
+export interface IArticleCategoryData {
+  id: number;
+  attributes: IArticleCategoryAttributes;
+}
+
+export interface IArticleCategoryAttributes {
   name: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
 }
 
-export interface Tags {
-  id: number;
-  attributes: TagAtrrib;
-}
+
 
 export interface TagsData {
-  data: Tags[];
-}
-
-export interface IAttributes {
-  Title: string;
-  Details: string;
-  category: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  MediaFiles: IArticleMediaFiles;
-  content_creator: IArticleContentCreator;
-  tags: TagsData;
+  data: ITag[];
 }
 
 export interface IArticleMediaFiles {
-  data: IArticleMediaData[];
+  data: IArticleMediaData;
 }
 
 export interface IArticleMediaData {
@@ -69,11 +76,13 @@ export interface IArticleMediaAttributes {
 }
 
 export interface IArticleMediaFormats {
-  small: IArticleFormatSmall;
-  thumbnail: IArticleFormatThumbnail;
+  small?: Small;
+  medium?: Medium;
+  thumbnail: Thumbnail;
+  large?: Large;
 }
 
-export interface IArticleFormatSmall {
+export interface Small {
   ext: string;
   url: string;
   hash: string;
@@ -85,7 +94,31 @@ export interface IArticleFormatSmall {
   height: number;
 }
 
-export interface IArticleFormatThumbnail {
+export interface Medium {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Thumbnail {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: any;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Large {
   ext: string;
   url: string;
   hash: string;
@@ -99,8 +132,4 @@ export interface IArticleFormatThumbnail {
 
 export interface IArticleContentCreator {
   data: IContentCreatorData;
-}
-
-export interface IArticleTags {
-  data: ITag[];
 }
