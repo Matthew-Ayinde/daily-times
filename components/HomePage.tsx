@@ -1,24 +1,24 @@
 "use client";
 
 import { useIsFetching, useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import AdvertismentSection from "./AdvertismentSection";
 import { IArticle } from "@/types/articles";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
-import ContentCard from "./ContentCard";
-import Banner from "./Banner";
 import NewCardComponent from "./NewCardComponent";
 
 const HomePage = () => {
   const isFetching = useIsFetching();
+  const [articles, setArticles] = useState<IArticle[]>([]);
 
   const fetchArticles = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/api/articles?populate=*`);
       const articles: IArticle[] = response.data.data;
 
-      console.log("articles", articles);
+      // console.log("articles", articles);
+      setArticles(articles);
 
       const filteredTrendingItems = filterByTag(articles, "Trending");
 
@@ -61,14 +61,14 @@ const HomePage = () => {
       </div>
 
       <>
-        {/* <AdvertismentSection /> */}
+        <AdvertismentSection articles={articles} />
 
-        <div className="mt-52 flex flex-col justify-center items-center w-full">
+        <div className="mt-40 lg:mt-52 flex flex-col justify-center items-center w-full">
           <p className="font-bold text-center text-3xl lg:text-5xl mb-20">
             Trending
           </p>
 
-          {isSuccess && articlesData && (
+          {articlesData && articlesData.length > 1 && (
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {articlesData.map((article) => (
                 <NewCardComponent article={article} key={article.id} />
