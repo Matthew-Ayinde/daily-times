@@ -29,6 +29,7 @@ const config = {
         "custom-white": "#F4F4F4",
         "custom-gray": "#333333",
         "custom-lightgray": "#BDBDBD",
+        "custom-subscribe":"#EFE8E8",
       },
       borderRadius: {
         lg: "var(--radius)",
