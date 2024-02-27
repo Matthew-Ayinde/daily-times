@@ -1,25 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import NewCardComponent from "./NewCardComponent";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
 import { IArticle } from "@/types/articles";
 import { useIsFetching, useQuery } from "@tanstack/react-query";
+import { filterByCategory } from "@/lib/helpers";
 
 const NewsComponent = () => {
   const isFetching = useIsFetching();
-  const [newsArticles, setNewsArticles] = useState<IArticle[]>([]);
 
   const fetchArticles = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/api/articles?populate=*`);
       const articles: IArticle[] = response.data.data;
 
-      console.log("articles", articles);
-      setNewsArticles(articles);
+      const filteredNewsArticles = filterByCategory(articles, "news");
 
-      return articles;
+      // console.log("articles", articles);
+
+      return filteredNewsArticles;
     } catch (error) {
       throw error;
     }

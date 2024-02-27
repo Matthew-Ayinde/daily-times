@@ -7,6 +7,7 @@ import { IArticle } from "@/types/articles";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
 import NewCardComponent from "./NewCardComponent";
+import { filterByTag } from "@/lib/helpers";
 
 const HomePage = () => {
   const isFetching = useIsFetching();
@@ -27,14 +28,6 @@ const HomePage = () => {
       throw error;
     }
   };
-
-  function filterByTag(array: IArticle[], tagName: string) {
-    return array.filter((item) => {
-      return item.attributes.tags.data.some(
-        (tag) => tag.attributes.name === tagName
-      );
-    });
-  }
 
   const {
     data: articlesData,

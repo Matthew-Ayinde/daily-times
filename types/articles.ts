@@ -24,7 +24,6 @@ export interface IAttributes {
   tags: TagsData;
 }
 
-
 export interface IArticleCategory {
   data: IArticleCategoryData;
 }
@@ -40,8 +39,6 @@ export interface IArticleCategoryAttributes {
   updatedAt: string;
   publishedAt: string;
 }
-
-
 
 export interface TagsData {
   data: ITag[];
