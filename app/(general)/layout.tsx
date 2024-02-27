@@ -37,13 +37,13 @@ export default function RootLayout({
         className={`${HKGrotesk.className} font-sans`}
         suppressHydrationWarning={true}
       >
-        <div>
+        <main>
           <Navbar />
 
-          <main>{children}</main>
+          <div>{children}</div>
 
           <Footer />
-        </div>
+        </main>
       </body>
     </html>
   );
