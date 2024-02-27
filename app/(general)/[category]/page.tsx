@@ -5,7 +5,6 @@ import { useIsFetching, useQuery } from "@tanstack/react-query";
 import { IArticle, IArticleRoot } from "@/types/articles";
 import axios from "axios";
 import React, { useState } from "react";
-import ContentCard from "@/components/ContentCard";
 
 const CategoryRoute = ({ params }: { params: { category: string } }) => {
   // console.log(params.category);

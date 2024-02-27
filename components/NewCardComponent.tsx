@@ -19,7 +19,7 @@ const NewCardComponent = ({ article }: CardProps) => {
             src={attributes.media_files.data.attributes.url}
             alt={""}
             fill
-            className="object-cover absolute object-center"
+            className="object-cover absolute object-top"
           />
         </CardHeader>
         <CardContent className="min-h-100px mt-4 pr-5 text-center">
