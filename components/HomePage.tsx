@@ -7,10 +7,7 @@ import { IArticle } from "@/types/articles";
 import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
 import { Skeleton } from "@/components/ui/skeleton";
-// import ContentCard from "./ContentCard";
-// import Banner from "./Banner";
 import NewCardComponent from "./NewCardComponent";
-import { Card, CardHeader, CardContent } from "./ui/card";
 
 const HomePage = () => {
   const isFetching = useIsFetching();
@@ -66,20 +63,19 @@ const HomePage = () => {
 
       <>
         {isLoading || isFetching ? (
-          <div className="flex flex-col gap-4 lg:gap-10 w-full mb-20" >
-
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-10 w-full h-[500px] mb-20">
-            <Skeleton className="lg:w-3/5 h-full bg-gray-300" />
-            <div className="flex flex-col items-center lg:justify-center gap-2 lg:items-start lg:w-2/5 pr-3">
-              <Skeleton className="h-[14px] w-[46px] rounded-xl bg-gray-300 mt-4" />
-              <Skeleton className="h-[14px] w-[78px] rounded-xl bg-gray-300 mt-2" />
-              <Skeleton className="h-10 w-96 rounded-xl bg-gray-300 mt-2" />
-              <Skeleton className="h-20 w-96 rounded-xl bg-gray-300 mt-2" />
-              <Skeleton className="h-[14px] w-[76px] rounded-xl bg-gray-300 mt-2" />
+          <div className="flex flex-col gap-4 lg:gap-10 w-full mb-20">
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-10 w-full h-[500px] mb-20">
+              <Skeleton className="lg:w-3/5 h-full bg-gray-300" />
+              <div className="flex flex-col items-center lg:justify-center gap-2 lg:items-start lg:w-2/5 pr-3">
+                <Skeleton className="h-[14px] w-[46px] rounded-xl bg-gray-300 mt-4" />
+                <Skeleton className="h-[14px] w-[78px] rounded-xl bg-gray-300 mt-2" />
+                <Skeleton className="h-10 w-96 rounded-xl bg-gray-300 mt-2" />
+                <Skeleton className="h-20 w-96 rounded-xl bg-gray-300 mt-2" />
+                <Skeleton className="h-[14px] w-[76px] rounded-xl bg-gray-300 mt-2" />
+              </div>
             </div>
-          </div>
-          
-          <div className=" flex flex-col lg:flex-row items-center lg:justify-between justify-center gap-4 lg:gap-10">
+
+            <div className=" flex flex-col lg:flex-row items-center lg:justify-between justify-center gap-4 lg:gap-10">
               {Array(3)
                 .fill(null)
                 .map((box) => (
@@ -126,7 +122,7 @@ const HomePage = () => {
             </ul>
           ) : (
             <>
-              {isSuccess && articlesData && (
+              {articlesData && (
                 <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                   {articlesData.map((article) => (
                     <NewCardComponent article={article} key={article.id} />
@@ -135,14 +131,6 @@ const HomePage = () => {
               )}
             </>
           )}
-
-          {/* {isSuccess && articlesData && (
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-              {articlesData.map((article) => (
-                <NewCardComponent article={article} key={article.id} />
-              ))}
-            </ul>
-          )} */}
         </div>
       </>
     </div>
