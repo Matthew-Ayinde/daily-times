@@ -7,12 +7,16 @@ import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const VideoComponent = () => {
+
+
   const [loading, setLoading] = useState(true);
+
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -33,6 +37,7 @@ const VideoComponent = () => {
                 width="290px"
                 height="380px"
                 controls
+
               />
             )}
           </div>
