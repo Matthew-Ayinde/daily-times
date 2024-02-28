@@ -30,6 +30,7 @@ const config = {
         "custom-gray": "#333333",
         "custom-lightgray": "#BDBDBD",
         "custom-subscribe":"#EFE8E8",
+        "custom-green": "#00FF00",
       },
       borderRadius: {
         lg: "var(--radius)",

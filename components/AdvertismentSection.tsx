@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import NewCardComponent from "./NewCardComponent";
 import parse from "html-react-parser";
+import { shuffle } from "lodash";
+import { formatDate } from "@/lib/helpers";
 
 interface Props {
   articles: IArticle[];
@@ -18,11 +20,12 @@ const AdvertismentSection = ({ articles }: Props) => {
             key={article.id}
             className="flex flex-col lg:flex-row gap-4 lg:gap-10 w-full h-[500px] mb-20"
           >
-            <div className="relative lg:w-3/5 h-full">
+            <div className="relative w-full lg:w-3/5 h-full">
               <Image
                 src={article.attributes.media_files.data.attributes.url}
                 alt=""
                 fill
+                priority
                 className="object-cover absolute object-top"
               />
             </div>
@@ -31,7 +34,9 @@ const AdvertismentSection = ({ articles }: Props) => {
               <p className="text-sm capitalize">
                 {article.attributes.category.data.attributes.name}
               </p>
-              <p className="text-xs text-custom-red">12 Februrary 2024</p>
+              <p className="text-xs text-custom-red">
+                {formatDate(article.attributes.publishedAt)}
+              </p>
               <p className="text-xl lg:text-3xl font-semibold lg:text-start text-center overflow-hidden line-clamp-2">
                 {article.attributes.Title}
               </p>
@@ -39,7 +44,9 @@ const AdvertismentSection = ({ articles }: Props) => {
                 {parse(article.attributes.content, { trim: true })}
               </p>
 
-              <Link href="">
+              <Link
+                href={`${article.attributes.category.data.attributes.name}/${article.id}`}
+              >
                 <p className="text-custom-red hover:underline mt-1 block font-bold">
                   Read More
                 </p>
@@ -50,9 +57,11 @@ const AdvertismentSection = ({ articles }: Props) => {
       </div>
 
       <div className=" flex flex-col lg:flex-row items-center lg:justify-between justify-center gap-4 lg:gap-10">
-        {articles?.slice(0, 3).map((article, index) => (
-          <NewCardComponent article={article} key={index} />
-        ))}
+        {shuffle(articles)
+          ?.slice(0, 3)
+          .map((article, index) => (
+            <NewCardComponent article={article} key={index} />
+          ))}
       </div>
     </>
   );
