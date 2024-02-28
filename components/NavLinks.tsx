@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import React, { useState } from "react";
+import { Button } from "./ui/button";
+import Image from "next/image";
 
 const links = [
   { name: "news", url: "news" },
@@ -14,27 +16,27 @@ const links = [
     submenu: true,
     sublinks: [
       {
-        head: "kids Topwear",
+        head: "SUbcategory 1",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Blouse", link: "/" },
-          { name: "Gowns", link: "/" },
+          { name: "SUbcategory 1", link: "/" },
+          { name: "SUbcategory 2", link: "/" },
+          { name: "SUbcategory 3", link: "/" },
         ],
       },
       {
         head: "kids Clothes",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Blouse", link: "/" },
-          { name: "Gowns", link: "/" },
+          { name: "SUbcategory 1", link: "/" },
+          { name: "SUbcategory 2", link: "/" },
+          { name: "SUbcategory 3", link: "/" },
         ],
       },
       {
         head: "kids shoes",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Blouse", link: "/" },
-          { name: "Gowns", link: "/" },
+          { name: "SUbcategory 1", link: "/" },
+          { name: "SUbcategory 2", link: "/" },
+          { name: "SUbcategory 3", link: "/" },
         ],
       },
     ],
@@ -57,18 +59,8 @@ const NavLinks = () => {
               {!link.submenu ? (
                 <Link
                   href={link.url}
-                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer ${
-                    isActive
-                      ? "text-custom-red font-medium"
-                      : "text-custom-darkgray"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ) : (
-                <p
-                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer ${
-                    isActive
+                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer hover:text-custom-red ${
+                    isActive && heading === link.name
                       ? "text-custom-red font-medium"
                       : "text-custom-darkgray"
                   }`}
@@ -79,16 +71,41 @@ const NavLinks = () => {
                   }
                 >
                   {link.name}
-                </p>
+                </Link>
+              ) : (
+                <Button
+                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer border-b-2 border-custom-black hover:border-custom-red hover:text-custom-red outline-none shadow-none hover:bg-white bg-white flex items-center gap-2 group transition-all duration-500 ease-in-out ${
+                    isActive || heading === link.name
+                      ? "text-custom-red font-medium border-custom-red"
+                      : "text-custom-darkgray"
+                  }`}
+                  onClick={() =>
+                    heading !== link.name
+                      ? setHeading(link.name)
+                      : setHeading("")
+                  }
+                >
+                  <p>{link.name}</p>
+                  <Image
+                    src={"/svg/chevron-down.svg"}
+                    alt={""}
+                    width={18}
+                    height={18}
+                    className={`rotate-180 group-hover:rotate-0 transition-all duration-500 ease-in-out ${
+                      isActive || heading === link.name ? "rotate-0" : ""
+                    }`}
+                  />
+                </Button>
               )}
 
               {/* sublinks */}
               {link.submenu && (
                 <div className="">
                   <div
-                    className={`absolute top-24 group-hover:lg:block hover:lg:block w-full left-0 right-0 px-16 py-6 bg-white ${
+                    className={`absolute top-24 w-full left-0 right-0 px-16 py-6 bg-white ${
                       heading === link.name ? "block" : "hidden"
                     }`}
+                    // group-hover:lg:block hover:lg:block
                   >
                     <div className="w-full flex gap-8">
                       <ul className="flex flex-col gap-4 capitalize w-52">
