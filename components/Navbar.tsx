@@ -43,8 +43,12 @@ const NewNavbar = () => {
           <NavLinks />
         </div>
 
-        <Button className="bg-custom-black px-12 py-[14px] rounded text-white hidden lg:flex lg:items-center lg:justify-center">
-          Subscribe
+        <Button
+          className="bg-custom-black px-12 py-[14px] rounded text-white hidden lg:flex lg:items-center lg:justify-center"
+          asChild
+        >
+          <Link href="/subscribe">Subscribe</Link>
+          {/* Subscribe */}
         </Button>
 
         {/* mobile view */}
@@ -56,8 +60,11 @@ const NewNavbar = () => {
           <div className=" space-y-8">
             <NavLinks />
 
-            <Button className="bg-custom-black px-12 py-[14px] rounded text-white lg:hidden flex items-center justify-cente">
-              Subscribe
+            <Button
+              className="bg-custom-black px-12 py-[14px] rounded text-white lg:hidden flex items-center justify-center"
+              asChild
+            >
+              <Link href="/subscribe">Subscribe</Link>
             </Button>
           </div>
         </ul>
