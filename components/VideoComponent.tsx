@@ -45,11 +45,13 @@ const VideoComponent = () => {
             key={index}
             className="flex space-x-4 h-[340px] items-center justify-center "
           >
-            <div className="flex-1">
+            <div className="flex-1 bg-black h-[380px]">
               <ReactPlayer
                 url={video.attributes?.link?.data?.attributes?.url}
-                width="290px"
-                height="380px"
+                // width="290px"
+                // height="380px"
+                width={290}
+                height={380}
                 controls
 
               />
