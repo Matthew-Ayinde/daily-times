@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import React, { useState } from "react";
-import { Button } from "./ui/button";
 import Image from "next/image";
 
 const links = [
@@ -16,7 +15,7 @@ const links = [
     submenu: true,
     sublinks: [
       {
-        head: "SUbcategory 1",
+        head: "Category One",
         sublink: [
           { name: "SUbcategory 1", link: "/" },
           { name: "SUbcategory 2", link: "/" },
@@ -24,7 +23,7 @@ const links = [
         ],
       },
       {
-        head: "kids Clothes",
+        head: "Category Two",
         sublink: [
           { name: "SUbcategory 1", link: "/" },
           { name: "SUbcategory 2", link: "/" },
@@ -32,7 +31,23 @@ const links = [
         ],
       },
       {
-        head: "kids shoes",
+        head: "Category Three",
+        sublink: [
+          { name: "SUbcategory 1", link: "/" },
+          { name: "SUbcategory 2", link: "/" },
+          { name: "SUbcategory 3", link: "/" },
+        ],
+      },
+      {
+        head: "Category Four",
+        sublink: [
+          { name: "SUbcategory 1", link: "/" },
+          { name: "SUbcategory 2", link: "/" },
+          { name: "SUbcategory 3", link: "/" },
+        ],
+      },
+      {
+        head: "Category Five",
         sublink: [
           { name: "SUbcategory 1", link: "/" },
           { name: "SUbcategory 2", link: "/" },
@@ -59,7 +74,7 @@ const NavLinks = () => {
               {!link.submenu ? (
                 <Link
                   href={link.url}
-                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer hover:text-custom-red ${
+                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer hover:text-custom-red lg:px-[6px] px-6 pt-1 pb-[11px] block ${
                     isActive && heading === link.name
                       ? "text-custom-red font-medium"
                       : "text-custom-darkgray"
@@ -73,8 +88,8 @@ const NavLinks = () => {
                   {link.name}
                 </Link>
               ) : (
-                <Button
-                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer border-b-2 border-custom-black hover:border-custom-red hover:text-custom-red outline-none shadow-none hover:bg-white bg-white flex items-center gap-2 group transition-all duration-500 ease-in-out ${
+                <div
+                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer lg:border-b-2 border-custom-black hover:border-custom-red hover:text-custom-red flex items-center gap-2 group transition-all duration-500 ease-in-out lg:px-[6px] px-6 pt-1 pb-[11px] justify-between lg:justify-normal ${
                     isActive || heading === link.name
                       ? "text-custom-red font-medium border-custom-red"
                       : "text-custom-darkgray"
@@ -95,12 +110,12 @@ const NavLinks = () => {
                       isActive || heading === link.name ? "rotate-0" : ""
                     }`}
                   />
-                </Button>
+                </div>
               )}
 
               {/* sublinks */}
               {link.submenu && (
-                <div className="">
+                <div className="hidden lg:block">
                   <div
                     className={`absolute top-24 w-full left-0 right-0 px-16 py-6 bg-white ${
                       heading === link.name ? "block" : "hidden"
@@ -165,13 +180,15 @@ const NavLinks = () => {
 
             {/* mobile view */}
             <div
-              className={`${heading === link.name ? "lg:hidden" : "hidden"}`}
+              className={`${
+                heading === link.name ? "lg:hidden" : "hidden"
+              } bg-[#F7F7F7] py-5 px-6 space-y-4`}
             >
               {link.sublinks?.map((slink) => (
                 <div key={slink.head} className="">
-                  <div className="lg:px-0 px-4 mt-1">
-                    <h1>{slink.head}</h1>
-                  </div>
+                  <p className="text-custom-black cursor-pointer">
+                    {slink.head}
+                  </p>
                 </div>
               ))}
             </div>

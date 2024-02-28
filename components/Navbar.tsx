@@ -18,7 +18,7 @@ const NewNavbar = () => {
     <nav className="">
       <div className="flex items-center justify-between max-w-screen-xxl lg:px-[90px] px-6 py-5 w-full mx-auto bg-white lg:relative border-b">
         {/* logo */}
-        <div className="lg:w-fit w-full z-10 flex items-center justify-between border-b lg:border-none pb-5 lg:pb-0">
+        <div className="lg:w-fit w-full z-30 flex items-center justify-between border-b lg:border-none pb-5 lg:pb-0">
           <Link href={"/"}>
             <Image
               alt="alt Image"
@@ -53,19 +53,21 @@ const NewNavbar = () => {
 
         {/* mobile view */}
         <ul
-          className={`lg:hidden uppercase absolute w-full h-full left-0 bg-white px-6 py-32 duration-500 ease-in-out transition-all ${
+          className={`lg:hidden uppercase absolute w-full h-full left-0 bg-white z-10 py-32 duration-500 ease-in-out transition-all ${
             open ? "bottom-0" : "bottom-[-100%]"
           }`}
         >
-          <div className=" space-y-8">
+          <div className="space-y-8">
             <NavLinks />
 
-            <Button
-              className="bg-custom-black px-12 py-[14px] rounded text-white lg:hidden flex items-center justify-center"
-              asChild
-            >
-              <Link href="/subscribe">Subscribe</Link>
-            </Button>
+            <div className="w-full px-6">
+              <Button
+                className="bg-custom-black px-12 py-[14px] rounded text-white lg:hidden flex items-center justify-center mt-14"
+                asChild
+              >
+                <Link href="/subscribe">Subscribe</Link>
+              </Button>
+            </div>
           </div>
         </ul>
       </div>
