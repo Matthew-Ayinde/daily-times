@@ -5,6 +5,7 @@ import moment from "moment";
 
 const Footer = () => {
   const currentYear = moment().format("YYYY");
+
   return (
     <div className="max-w-screen-xxl lg:px-100px px-6 py-20 w-full mx-auto">
       <div className="">
@@ -20,7 +21,11 @@ const Footer = () => {
 
         <div className="flex lg:items-center flex-col lg:flex-row lg:gap-8 gap-3">
           {["one", "two", "three", "four", "five"].map((link) => (
-            <Link key={link} href={""} className="font-semibold capitalize whitespace-nowrap">
+            <Link
+              key={link}
+              href={""}
+              className="font-semibold capitalize whitespace-nowrap"
+            >
               Link {link}
             </Link>
           ))}
