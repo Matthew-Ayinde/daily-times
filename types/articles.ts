@@ -130,3 +130,26 @@ export interface Large {
 export interface IArticleContentCreator {
   data: IContentCreatorData;
 }
+
+export interface MediaData {
+  id: number;
+  attributes: IArticleMediaAttributes;
+}
+
+export interface ILink {
+  data: MediaData;
+}
+
+export interface IAttributesVideo {
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  link: ILink;
+}
+
+export interface IVideo {
+  id: number;
+  attributes: IAttributesVideo;
+}
