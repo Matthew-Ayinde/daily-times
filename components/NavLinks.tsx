@@ -117,7 +117,7 @@ const NavLinks = () => {
               {link.submenu && (
                 <div className="hidden lg:block">
                   <div
-                    className={`absolute top-24 w-full left-0 right-0 px-16 py-6 bg-white ${
+                    className={`absolute top-24 w-full left-0 right-0 px-16 py-6 bg-white z-10 border-b ${
                       heading === link.name ? "block" : "hidden"
                     }`}
                     // group-hover:lg:block hover:lg:block
