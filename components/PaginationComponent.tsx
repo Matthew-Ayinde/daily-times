@@ -46,7 +46,6 @@ PaginationProps) => {
 
   return (
     <div>
-      {pageNum}
       <Pagination className="">
         <PaginationContent className="flex flex-wrap gap-2">
           <PaginationItem className="w-auto text-custom-red font-bold">

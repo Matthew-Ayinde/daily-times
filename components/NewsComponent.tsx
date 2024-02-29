@@ -113,7 +113,7 @@ const NewsComponent = () => {
               </span>
             </p>
 
-            {/* <PaginationComponent paginationData={paginationData} /> */}
+            <PaginationComponent paginationData={paginationData} />
           </div>
         )}
       </div>
