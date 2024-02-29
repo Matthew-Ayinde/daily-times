@@ -12,6 +12,11 @@ const NewNavbar = () => {
   const [open, setOpen] = useState(false);
   const toggleMobileMenu = () => {
     setOpen(!open);
+    if (!open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   };
 
   return (
