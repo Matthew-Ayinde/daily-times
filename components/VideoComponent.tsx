@@ -32,7 +32,7 @@ const VideoComponent = () => {
   } = useQuery<IVideo[], Error>({
     queryKey: ["videos"],
     queryFn: fetchVideos,
-    staleTime: 5000,
+    staleTime: 120000,
   });
 
   return (

@@ -8,6 +8,7 @@ import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
 import { Skeleton } from "@/components/ui/skeleton";
 import NewCardComponent from "./NewCardComponent";
+import { filterByTag } from "@/lib/helpers";
 
 const HomePage = () => {
   const isFetching = useIsFetching();
@@ -29,14 +30,6 @@ const HomePage = () => {
     }
   };
 
-  function filterByTag(array: IArticle[], tagName: string) {
-    return array.filter((item) => {
-      return item.attributes.tags.data.some(
-        (tag) => tag.attributes.name === tagName
-      );
-    });
-  }
-
   const {
     data: articlesData,
     isLoading,
@@ -46,12 +39,8 @@ const HomePage = () => {
   } = useQuery<IArticle[], Error>({
     queryKey: ["articles"],
     queryFn: fetchArticles,
-    staleTime: 5000,
+    staleTime: 120000,
   });
-
-  // if (isFetching) return <div>Fetching...</div>;
-  // if (isLoading) return <div>Loading...</div>;
-  // if (isError) return <div>Error: {error.message}</div>;
 
   return (
     <div className="max-w-screen-xxl lg:px-100px px-6 pt-16 pb-[136px] w-full mx-auto">
@@ -123,7 +112,7 @@ const HomePage = () => {
           ) : (
             <>
               {articlesData && (
-                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 lg:gap-y-20 gap-y-12">
                   {articlesData.map((article) => (
                     <NewCardComponent article={article} key={article.id} />
                   ))}
