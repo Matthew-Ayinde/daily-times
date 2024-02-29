@@ -75,8 +75,8 @@ const NavLinks = () => {
                 <Link
                   href={link.url}
                   className={`capitalize text-lg text-custom-black font-semibold cursor-pointer hover:text-custom-red lg:px-[6px] px-6 pt-1 pb-[11px] block ${
-                    isActive && heading === link.name
-                      ? "text-custom-red font-medium"
+                    isActive || heading === link.name
+                      ? "text-custom-red font-medium lg:border-b-2 border-custom-red"
                       : "text-custom-darkgray"
                   }`}
                   onClick={() =>
@@ -89,9 +89,9 @@ const NavLinks = () => {
                 </Link>
               ) : (
                 <div
-                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer lg:border-b-2 border-custom-black hover:border-custom-red hover:text-custom-red flex items-center gap-2 group transition-all duration-500 ease-in-out lg:px-[6px] px-6 pt-1 pb-[11px] justify-between lg:justify-normal ${
+                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer hover:text-custom-red flex items-center gap-2 group transition-all duration-500 ease-in-out lg:px-[6px] px-6 pt-1 pb-[11px] justify-between lg:justify-normal ${
                     isActive || heading === link.name
-                      ? "text-custom-red font-medium border-custom-red"
+                      ? "text-custom-red font-medium lg:border-b-2 border-custom-red"
                       : "text-custom-darkgray"
                   }`}
                   onClick={() =>

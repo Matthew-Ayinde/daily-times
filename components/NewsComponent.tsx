@@ -6,21 +6,20 @@ import axios from "axios";
 import { BASE_URL } from "@/lib/constants";
 import { IArticle } from "@/types/articles";
 import { useIsFetching, useQuery } from "@tanstack/react-query";
-import { filterByCategory } from "@/lib/helpers";
 
 const NewsComponent = () => {
   const isFetching = useIsFetching();
 
   const fetchArticles = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/articles?populate=*`);
+      const response = await axios.get(
+        `${BASE_URL}/api/articles?filters[category][name][$eq]=news&populate=*`
+      );
       const articles: IArticle[] = response.data.data;
-
-      const filteredNewsArticles = filterByCategory(articles, "news");
 
       // console.log("articles", articles);
 
-      return filteredNewsArticles;
+      return articles;
     } catch (error) {
       throw error;
     }
@@ -39,15 +38,19 @@ const NewsComponent = () => {
   });
 
   return (
-    <div className="max-w-screen-xxl lg:px-100px px-6 pt-16 pb-[136px] w-full mx-auto">
-      <div className="mt-2 lg:mt-5 flex flex-col justify-center items-center w-full">
-        <p className="font-bold text-center text-3xl lg:text-5xl mb-20">News</p>
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {newsData &&
-            newsData.map((article, index) => (
-              <NewCardComponent article={article} key={index} />
+    <div className="max-w-screen-xxl lg:px-100px px-6 lg:py-[104px] py-7 w-full mx-auto">
+      <div className="w-full bg-red-500 flex flex-col justify-center items-center">
+        <p className="font-bold text-center text-3xl lg:text-[56px] lg:mb-20 mb-10">
+          News
+        </p>
+
+        {newsData && (
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {newsData.map((article) => (
+              <NewCardComponent article={article} key={article.id} />
             ))}
-        </ul>
+          </ul>
+        )}
       </div>
     </div>
   );
