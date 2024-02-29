@@ -39,7 +39,7 @@ const HomePage = () => {
   } = useQuery<IArticle[], Error>({
     queryKey: ["articles"],
     queryFn: fetchArticles,
-    staleTime: 5000,
+    staleTime: 120000,
   });
 
   return (
@@ -112,7 +112,7 @@ const HomePage = () => {
           ) : (
             <>
               {articlesData && (
-                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 lg:gap-y-20 gap-y-12">
                   {articlesData.map((article) => (
                     <NewCardComponent article={article} key={article.id} />
                   ))}

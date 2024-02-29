@@ -37,7 +37,7 @@ const CategoryRoute = ({ params }: { params: { category: string } }) => {
   // } = useQuery<IArticle[], Error>({
   //   queryKey: ["articles"],
   //   queryFn: fetchArticles,
-  //   staleTime: 5000,
+  //   staleTime: 120000,
   // });
 
   return (
