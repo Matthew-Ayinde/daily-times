@@ -146,6 +146,8 @@ export interface IAttributesVideo {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  likes: number;
+  dislikes: number;
   link: ILink;
 }
 
