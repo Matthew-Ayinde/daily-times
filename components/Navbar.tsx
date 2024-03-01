@@ -10,8 +10,14 @@ import OpenIcon from "./OpenIcon";
 
 const NewNavbar = () => {
   const [open, setOpen] = useState(false);
+  
   const toggleMobileMenu = () => {
     setOpen(!open);
+    if (!open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   };
 
   return (
@@ -53,8 +59,8 @@ const NewNavbar = () => {
 
         {/* mobile view */}
         <ul
-          className={`lg:hidden uppercase absolute w-full h-full left-0 bg-white z-10 py-32 duration-500 ease-in-out transition-all ${
-            open ? "bottom-0" : "bottom-[-100%]"
+          className={`lg:hidden uppercase absolute w-full h-full bottom-0 bg-white z-10 py-32 duration-500 ease-in-out transition-all ${
+            open ? "left-0" : "left-[-100%]"
           }`}
         >
           <div className="space-y-8">

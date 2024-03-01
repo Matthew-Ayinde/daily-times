@@ -36,11 +36,7 @@ const NewCardComponent = ({ article }: CardProps) => {
           <p className="text-xs text-custom-red">
             {formatDate(attributes.publishedAt)}
           </p>
-          {/* <p className="text-custom-black leading-relaxed my-2">
-                {attributes.Details?.length > 60
-                    ? `${attributes.Details?.slice(0, 60)}...`
-                    : attributes.Details}
-                </p> */}
+
           <Link href={`${attributes.category.data.attributes.name}/${id}`}>
             <p className="text-custom-red hover:underline mt-1 block font-bold">
               Read More

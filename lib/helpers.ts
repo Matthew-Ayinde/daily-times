@@ -1,3 +1,5 @@
+import { IArticle } from "@/types/articles";
+
 import moment from "moment";
 
 export const slugify = (title: string): string => {
@@ -9,6 +11,20 @@ export const deslugify = (slug: string): string => {
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
+};
+
+export const filterByCategory = (array: IArticle[], categoryName: string) => {
+  return array.filter(
+    (item) => item.attributes.category.data.attributes.name === categoryName
+  );
+};
+
+export const filterByTag = (array: IArticle[], tagName: string) => {
+  return array.filter((item) => {
+    return item.attributes.tags.data.some(
+      (tag) => tag.attributes.name === tagName
+    );
+  });
 };
 
 export const formatDate = (dateString: string): string => {

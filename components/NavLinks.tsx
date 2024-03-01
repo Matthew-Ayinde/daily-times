@@ -75,8 +75,8 @@ const NavLinks = () => {
                 <Link
                   href={link.url}
                   className={`capitalize text-lg text-custom-black font-semibold cursor-pointer hover:text-custom-red lg:px-[6px] px-6 pt-1 pb-[11px] block ${
-                    isActive && heading === link.name
-                      ? "text-custom-red font-medium"
+                    isActive || heading === link.name
+                      ? "text-custom-red font-medium lg:border-b-2 border-custom-red"
                       : "text-custom-darkgray"
                   }`}
                   onClick={() =>
@@ -89,9 +89,9 @@ const NavLinks = () => {
                 </Link>
               ) : (
                 <div
-                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer lg:border-b-2 border-custom-black hover:border-custom-red hover:text-custom-red flex items-center gap-2 group transition-all duration-500 ease-in-out lg:px-[6px] px-6 pt-1 pb-[11px] justify-between lg:justify-normal ${
+                  className={`capitalize text-lg text-custom-black font-semibold cursor-pointer hover:text-custom-red flex items-center gap-2 group transition-all duration-500 ease-in-out lg:px-[6px] px-6 pt-1 pb-[11px] justify-between lg:justify-normal ${
                     isActive || heading === link.name
-                      ? "text-custom-red font-medium border-custom-red"
+                      ? "text-custom-red font-medium lg:border-b-2 border-custom-red"
                       : "text-custom-darkgray"
                   }`}
                   onClick={() =>
@@ -117,7 +117,7 @@ const NavLinks = () => {
               {link.submenu && (
                 <div className="hidden lg:block">
                   <div
-                    className={`absolute top-24 w-full left-0 right-0 px-16 py-6 bg-white ${
+                    className={`absolute top-24 w-full left-0 right-0 px-16 py-6 bg-white z-10 border-b ${
                       heading === link.name ? "block" : "hidden"
                     }`}
                     // group-hover:lg:block hover:lg:block
