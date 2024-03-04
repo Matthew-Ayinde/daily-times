@@ -20,29 +20,39 @@ const NewsComponent = () => {
   const [paginationData, setPaginationData] = useState<IPagination | null>(
     null
   );
+  const [pageNum, setPageNum] = useState(1);
 
-  const startIndex = paginationData?.page
-    ? (paginationData.page - 1) * paginationData.pageSize + 1
+  const startIndex = paginationData
+    ? (pageNum - 1) * (paginationData.pageSize ?? 0) + 1
     : 1;
   const endIndex = Math.min(
-    startIndex + (paginationData?.pageSize ?? 0) - 1,
+    startIndex + ((paginationData?.pageSize ?? 0) - 1),
     paginationData?.total ?? 25
   );
 
+<<<<<<< HEAD
   const fetchArticles = async () => {
     
+=======
+  const fetchArticles = async (page: number) => {
+>>>>>>> 40c7eabf1b772a0df4cb1025ea0976080ff962ee
     try {
       const response = await axios.get<IArticleRoot>(
-        `${BASE_URL}/api/articles?filters[category][name][$eq]=news&populate=*`
+        `${BASE_URL}/api/articles?pagination[page]=${page}&filters[category][name][$eq]=news&populate=*`
       );
       const articles: IArticle[] = response.data.data;
       const pagination: IPagination = response.data.meta.pagination;
 
+<<<<<<< HEAD
       console.log(response);
 
       setPaginationData(pagination);
 
 
+=======
+      setPaginationData(pagination);
+
+>>>>>>> 40c7eabf1b772a0df4cb1025ea0976080ff962ee
       return articles;
     } catch (error) {
       throw error;
@@ -57,8 +67,8 @@ const NewsComponent = () => {
     error,
     isPlaceholderData,
   } = useQuery<IArticle[], Error>({
-    queryKey: ['newsArticles'],
-    queryFn: fetchArticles,
+    queryKey: ["newsArticles", pageNum],
+    queryFn: () => fetchArticles(pageNum),
     placeholderData: keepPreviousData,
     staleTime: 120000,
   });
@@ -73,7 +83,7 @@ const NewsComponent = () => {
         <>
           {isLoading || isFetching ? (
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-              {Array(9)
+              {Array(6)
                 .fill(null)
                 .map((box) => (
                   <div key={box}>
@@ -119,7 +129,12 @@ const NewsComponent = () => {
               </span>
             </p>
 
-            {/* <PaginationComponent paginationData={paginationData} /> */}
+            <PaginationComponent
+              paginationData={paginationData}
+              pageNum={pageNum}
+              setPageNum={setPageNum}
+              isPlaceholderData={isPlaceholderData}
+            />
           </div>
         )}
       </div>
