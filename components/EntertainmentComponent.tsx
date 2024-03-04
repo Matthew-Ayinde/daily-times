@@ -39,9 +39,7 @@ const EntertainmentComponent = () => {
       const articles: IArticle[] = response.data.data;
       const pagination: IPagination = response.data.meta.pagination;
 
-      console.log(pagination);
-      console.log(articles);
-
+      
       setPaginationData(pagination);
 
       // console.log("articles", articles);

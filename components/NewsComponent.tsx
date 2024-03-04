@@ -30,12 +30,7 @@ const NewsComponent = () => {
     paginationData?.total ?? 25
   );
 
-<<<<<<< HEAD
-  const fetchArticles = async () => {
-    
-=======
   const fetchArticles = async (page: number) => {
->>>>>>> 40c7eabf1b772a0df4cb1025ea0976080ff962ee
     try {
       const response = await axios.get<IArticleRoot>(
         `${BASE_URL}/api/articles?pagination[page]=${page}&filters[category][name][$eq]=news&populate=*`
@@ -43,16 +38,8 @@ const NewsComponent = () => {
       const articles: IArticle[] = response.data.data;
       const pagination: IPagination = response.data.meta.pagination;
 
-<<<<<<< HEAD
-      console.log(response);
-
       setPaginationData(pagination);
 
-
-=======
-      setPaginationData(pagination);
-
->>>>>>> 40c7eabf1b772a0df4cb1025ea0976080ff962ee
       return articles;
     } catch (error) {
       throw error;
