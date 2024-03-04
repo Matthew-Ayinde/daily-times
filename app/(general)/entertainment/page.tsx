@@ -1,7 +1,12 @@
-import React from "react";
+import EntertainmentComponent from '@/components/EntertainmentComponent'
+import React from 'react'
 
-const Page = () => {
-  return <div>Entertainment</div>;
-};
+const page = () => {
+  return (
+    <div>
+      <EntertainmentComponent />
+    </div>
+  )
+}
 
-export default Page;
+export default page

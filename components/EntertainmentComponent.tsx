@@ -15,7 +15,7 @@ import { IPagination } from '@/types';
 import PaginationComponent from './PaginationComponent';
 import NotFoundComponent from './NotFoundComponent';
 
-const NewsComponent = () => {
+const EntertainmentComponent = () => {
   const isFetching = useIsFetching();
   const [paginationData, setPaginationData] = useState<IPagination | null>(
     null
@@ -30,18 +30,21 @@ const NewsComponent = () => {
   );
 
   const fetchArticles = async () => {
-    
+    // ?pagination[page]=1&pagination[pageSize]=3
+    // ?filters[category][name][$eq]=news&populate=*
     try {
       const response = await axios.get<IArticleRoot>(
-        `${BASE_URL}/api/articles?filters[category][name][$eq]=news&populate=*`
+        `${BASE_URL}/api/articles?filters[category][name][$eq]=entertainment&populate=*`
       );
       const articles: IArticle[] = response.data.data;
       const pagination: IPagination = response.data.meta.pagination;
 
-      console.log(response);
+      console.log(pagination);
+      console.log(articles);
 
       setPaginationData(pagination);
 
+      // console.log("articles", articles);
 
       return articles;
     } catch (error) {
@@ -50,7 +53,7 @@ const NewsComponent = () => {
   };
 
   const {
-    data: newsData,
+    data: entertainmentData,
     isLoading,
     isError,
     isSuccess,
@@ -67,11 +70,11 @@ const NewsComponent = () => {
     <div className="max-w-screen-xxl lg:px-100px px-6 lg:py-[104px] py-7 w-full mx-auto">
       <div className="w-full flex flex-col justify-center items-center">
         <p className="font-bold text-center text-3xl lg:text-[56px] lg:mb-20 mb-10">
-          News
+          Entertainment
         </p>
 
         <>
-          {isLoading || isFetching ? (
+          {(isLoading || isFetching) ? (
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {Array(9)
                 .fill(null)
@@ -89,14 +92,14 @@ const NewsComponent = () => {
                   </div>
                 ))}
             </ul>
-          ) : null}
+          ): null}
 
           <>
-            {newsData && (
+            {entertainmentData && (
               <>
-                {newsData.length > 0 ? (
+                {entertainmentData.length > 0 ? (
                   <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 lg:gap-y-20 gap-y-12">
-                    {newsData.map((article) => (
+                    {entertainmentData.map((article) => (
                       <NewCardComponent article={article} key={article.id} />
                     ))}
                   </ul>
@@ -110,21 +113,23 @@ const NewsComponent = () => {
           </>
         </>
 
-        {newsData && newsData.length > 1 && paginationData && (
-          <div className="lg:mt-20 mt-14">
-            <p className="text-center text-xs text-custom-black mb-8">
-              Showing {startIndex} - {endIndex}{' '}
-              <span className="text-[#999CA0]">
-                of {paginationData?.total ?? 0}
-              </span>
-            </p>
+        {entertainmentData &&
+          entertainmentData.length > 1 &&
+          paginationData && (
+            <div className="lg:mt-20 mt-14">
+              <p className="text-center text-xs text-custom-black mb-8">
+                Showing {startIndex} - {endIndex}{' '}
+                <span className="text-[#999CA0]">
+                  of {paginationData?.total ?? 0}
+                </span>
+              </p>
 
-            {/* <PaginationComponent paginationData={paginationData} /> */}
-          </div>
-        )}
+              {/* <PaginationComponent paginationData={paginationData} /> */}
+            </div>
+          )}
       </div>
     </div>
   );
 };
 
-export default NewsComponent;
+export default EntertainmentComponent;
